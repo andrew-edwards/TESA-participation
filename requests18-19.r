@@ -19,7 +19,7 @@ names(tab)[names(tab) ==
 
 
 tab = select(tab, -Timestamp)
-tab = mutate(tab, name = paste(First.name, Surname))
+tab = mutate(tab, Name = paste(First.name, Surname), Region = "PAC")
 events = names(tab)[6:10]
 
 # May need this based on 17-18 to shorten any long answers
@@ -59,9 +59,16 @@ events = names(tab)[6:10]
 
 
 
-# One table for each event
+# One table for each event, just keeping what's needed for spreadsheet
 for(i in 1:length(events)){
     assign(paste0(events[i], "-tab"), filter(tab, events[i] != ""))
+    assign(paste0(events[i], "-tab"),
+           select(noquote(paste0(events[i], "-tab")),
+                  Region,
+                  Priority = NA,
+                  Name,
+                  Location))
+                  # events[i]))
 }
 
 
