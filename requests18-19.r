@@ -1,6 +1,7 @@
 # requests18-19.r - import .csv file from Google Form and tidy up. 26th June 2018.
 #  Based on requests17-18.r from 4th May 2017.
 
+rm(list = ls())
 require(dplyr)
 
 tab = read.csv("TESA18-19.csv")
@@ -12,25 +13,27 @@ names(tab)[names(tab) == "Five.day.Introduction.to.Stock.Assessment.Course"] =
                             "IntroSA"
 names(tab)[names(tab) == "Zero.inflated.Models.Course"] = "ZeroInf"
 names(tab)[names(tab) ==
+       "Invertebrate.Assessment.Workshop"] = "Invert"
+names(tab)[names(tab) ==
        "Transparent..Traceable.and.Transferable.Assessments.Workshop"] = "TTT"
 
 
-** tab = select(tab, Surname, First.name, Division, Work.location, Event)
+tab = select(tab, -Timestamp)
+tab = mutate(tab, name = paste(First.name, Surname))
+events = names(tab)[6:10]
 
-# I should have put shorter descriptions in the form to avoid this:
-tab = tbl_df(lapply(tab, function(x) {
-                  gsub("TMB.II.Course",
-                       "TMB2", x) }) )
-tab = tbl_df(lapply(tab, function(x) {
-                  gsub("Introduction to mixed modelling and GLMM, Halifax",
-                       "GLMM", x) }) )
-tab = tbl_df(lapply(tab, function(x) {
-                  gsub("Salmonid/anadromous assessment workshop, Moncton",
-                       "Salmon", x) }) )
+# May need this based on 17-18 to shorten any long answers
+#tab = tbl_df(lapply(tab, function(x) {
+#                  gsub("TMB.II.Course",
+#                       "TMB2", x) }) )
+
+
+# 2017-18 had to do all this manual stuff, but hopefully avoid this year
+#  (just fill the form for any late/new people? - or add manually to the main .csv)
 # Need to add Kathryn back in manually for DLMtool as I deleted her thinking
 #  I could add it to her response on the Form, but I can't. In future will
 #  be easier to stick with one answer per row for the form.
-write.csv(file="temp.csv", tab)
+# write.csv(file="temp.csv", tab)
 # Just do manually on a .csv file - not ideal but only a one off and save as
 #  temp2.csv to then reload in.
 # Doing the following - add Kathryn for DLMtool, split up those with ; into
@@ -44,12 +47,24 @@ write.csv(file="temp.csv", tab)
 # Reordering for ESD as per Eddy's email of 26/5/17
 # Adding Rob Kronlund for DLMtool. 7/6/17.
 
-tab2 = read.csv("temp2.csv")
-tab2 = tbl_df(tab2)
-tab2 = select(tab2, -1)
+#tab2 = read.csv("temp2.csv")
+#tab2 = tbl_df(tab2)
+#tab2 = select(tab2, -1)
 
-tab2 = arrange(tab2, desc(Event))
-print(as.data.frame(tab2))
+#tab2 = arrange(tab2, desc(Event))
+#print(as.data.frame(tab2))
+
+# I used descriptions for people to explain why they're interested in an event.
+#  So want to get a tbl_df for each event.
+
+
+
+# One table for each event
+for(i in 1:length(events)){
+    assign(paste0(events[i], "-tab"), filter(tab, events[i] != ""))
+}
+
+
 
 print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
 
