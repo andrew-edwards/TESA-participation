@@ -1,0 +1,16 @@
+*.log
+*.aux
+*.bbl
+*.blg
+*~
+*.dvi
+*.ps
+*.RHistory
+*.png
+*.pdf
+*.7z
+*.doc
+*.docx
+*.RData
+*.xls
+*.csv
