@@ -13,4 +13,7 @@
 *.docx
 *.RData
 *.xls
+*.xlsx
 *.csv
+
+requests17-18.r
