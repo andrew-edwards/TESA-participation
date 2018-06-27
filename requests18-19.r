@@ -62,25 +62,23 @@ events = names(tab)[6:10]
 
 
 # One table for each event, just keeping what's needed for spreadsheet
+#  sym() is from https://edwinth.github.io/blog/dplyr-recipes/ thanks
+#  to Sean Anderson.
 for(i in 1:length(events)){
-    temp = filter(tab, events[i] != "")
+    temp = filter(tab, !!sym(events[i]) != "")
     temp = select(temp,
                   Region,
                   Priority,
                   Name,
-                  Location)
-    #              events[i])
-
-    assign(paste0(events[i], "-tab"),
-           select(noquote(paste0(events[i], "-tab")),
-
-
-
-    assign(paste0(events[i], "-tab"),
+                  Location,
+                  events[i])
+#    assign(paste0(events[i], "-tab"),
+#           select(noquote(paste0(events[i], "-tab")),
+    assign(paste0(events[i], ".tab"), temp)
 }
 
 
-
+stop()
 print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
 
 write.csv(file="temp3.csv", tab2)
