@@ -1,0 +1,40 @@
+"Event", "Person", "Subsidy", "Est costs", "Section"   #, "Amount", "Coding"
+# Get the Amount from the 
+#  TESA 2018-19 Master Spreadsheet_6_July-2018.xlsx. Not quite final.
+Intro, Ann-Marie Huang, 1500, 2576, SAL
+Intro, Michelle Bigg, 1500, 2576, INS
+Intro, Erika Anderson, 1500, 2576, SAL
+Intro, Cameron Freshwater, 1500, 2576, QAMS
+
+# TTT particants
+TTT, Kendra Holt, 0, 0, QAMS
+TTT, Dana Haggarty, 0, 0, GF
+TTT, Brooke Davis, 0, 0, QAMS 
+TTT, Jaclyn Cleary, 0, 0, QAMS
+TTT, Catarina Wor, 0, 0, SAL
+TTT, Shannon Obradovich, 0, 0, INS
+TTT, Jackie King, 0, 0, ESD
+
+# Insert assessment
+Insert, Shannon Obradovich, 2050, 2853, INS
+Insert, Zane Zhang, 2050, 2853, QAMS
+
+# TMB2
+TMB2, Robyn Forrest, 1500, 3800, QAMS
+TMB2, Jaclyn Cleary, 1500, 3800, QAMS
+TMB2, Andrew Edwards, 1500, 3800, QAMS
+TMB2, Catarina Wor, 1500, 3800, SAL
+TMB2, Brooke Davis, 1500, 3800, QAMS
+
+# Zero-inflated
+Zero, Brianna Wright, 500, 1000, ESD
+Zero, Dana Haggarty, 500, 1000, GF
+Zero, Shannon Obradovich, 500, 1000, INS
+Zero, Andrew Edwards, 500, 1000, QAMS
+Zero, Jackie King, 500, 1000, ESD
+Zero, Catarina Wor, 500, 1000, SAL
+Zero, Jennifer Boldt, 500, 1000, ESD
+
+# TTT hosting
+TTThosting, Local costs, 2000, 2021.25, NA    # ** may need to change to 180
+TTThosting, Ian Taylor, 2000, 2000, NA
