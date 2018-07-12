@@ -1,6 +1,10 @@
 # requests18-19.r - import .csv file from Google Form and tidy up. 26th June 2018.
 #  Based on requests17-18.r from 4th May 2017.
 
+# Downloaded from Google Fosm on 27th May 2018 with 24 responses. If more come in
+#  then add them to the spreadsheet manually.
+
+# NOW ONLY EDIT SPREADSHEET - ADDED JACKIE MANUALLY.
 rm(list = ls())
 require(dplyr)
 
@@ -75,13 +79,17 @@ for(i in 1:length(events)){
 #    assign(paste0(events[i], "-tab"),
 #           select(noquote(paste0(events[i], "-tab")),
     assign(paste0(events[i], ".tab"), temp)
+    write.csv(file=paste0(events[i], ".csv"),
+              temp, quote = FALSE, row.names = FALSE)
+    write.csv(file=paste0(events[i], "noComm.csv"),
+              select(temp, Region, Priority, Name, Location),
+              quote = FALSE, row.names = FALSE)
+
 }
 
+# print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
 
-stop()
-print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
-
-write.csv(file="temp3.csv", tab2)
+# write.csv(file="temp3.csv", tab2)
 
 # tabJustQAM = filter(tab2, Division == "ARRAD")
 # Have to manually filter further
@@ -92,4 +100,11 @@ write.csv(file="temp3.csv", tab2)
 
 # tabJustQAM = select(tabJustQAM, Surname, First.name, Event)
 
-tabJustESD = filter(tab2, Division == "ESD", Event == "GLMM")
+# tabJustESD = filter(tab2, Division == "ESD", Event == "GLMM")
+
+
+print(as.data.frame(IntroSA.tab))
+print(TTT.tab)
+print(Invert.tab)
+print(TMB2.tab)
+print(ZeroInf.tab)

@@ -1,0 +1,285 @@
+% TESAbudget18.Snw - how and where to move TESA money for 2018-19, and for
+%   keeping track of proposed participants.  12/7/18.
+% TESAbudget17.Snw - how and where to move TESA money for 2017-18. 6/9/17.
+% TESAbudget16.Snw - how and where to move TESA money for 2016-17. 30/11/16.
+
+% nSeaFungAnalysis.Snw - analysis of data that Julia downloaded based on
+%  Fung et al., that I first imported into nSeaFungImport.Snw. 3/11/15.
+
+\documentclass[11pt]{article}
+
+\textheight 213mm
+\topmargin -10mm
+\addtolength{\textwidth}{1.0in}
+\addtolength{\oddsidemargin}{-0.5in}
+\usepackage{Sweave}
+\usepackage{epsfig}
+% \usepackage{rotating}           % For sideways table
+% \usepackage{lineno}
+\usepackage{amsmath}       % for \text for x_min, for \dfrac
+% \usepackage{cancel}        % for \cancel
+\usepackage{natbib}
+
+% \usepackage{resDocSty}   % Res Doc .sty file
+\usepackage{graphicx}
+
+\usepackage{mathptmx}    % Should have Times plus math fonts.
+
+
+\bibliographystyle{natbib}
+
+% \linenumbers
+
+
+\newcommand{\eb}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\xmin}{x_{\mathrm{min}}}
+\newcommand{\xmax}{x_{\mathrm{max}}}
+\newcommand{\logten}{\log_{\mathrm{10}}}
+\newcommand{\logtwo}{\log_{\mathrm{2}}}
+
+\newcommand\onefig[2]{    % filename is #1, text is #2
+  \begin{figure}[tp]
+  \begin{center}
+   % \includegraphics[width=6in,height=7in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+  \epsfxsize=6in
+  \epsfbox{#1.eps}
+  \end{center}
+  \caption{#2 }
+  \label{fig:#1}
+  \end{figure}
+  \clearpage
+}
+
+\newcommand\twofig[3]{   % figure #1 under #2, caption text #3
+  \begin{figure}[tp]     %  label will be #1
+  \centering
+%  \epsfxsize=6in
+%  \epsfysize=3.5in
+  \begin{tabular}{c}
+  %	\includegraphics[width=6in,height=3.5in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+  %	\includegraphics[width=6in,height=3.5in,keepaspectratio=TRUE]{#2.eps}
+  \epsfbox{#1.eps} \\
+  \epsfbox{#2.eps}
+  \end{tabular}
+  \caption{#3}
+  \label{fig:#1}
+  \end{figure}
+  \clearpage
+}
+
+\newcommand\threefig[4]{    % figure #1 then #2 then #3,
+  \begin{figure}[htp]       %  caption text #4, label will be #1
+  \centering
+  \begin{tabular}{c}
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#2.eps} \\
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#3.eps}
+  \vspace{-20mm}
+  \epsfbox{#1.eps} \\
+  \vspace{-20mm}
+  \epsfbox{#2.eps} \\
+   \vspace{-20mm}
+  \epsfbox{#3.eps}
+  \end{tabular}
+  \caption{#4}
+  \label{fig:#1}
+  \end{figure}
+}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+
+\SweaveOpts{pdf=FALSE, echo=TRUE, results=verbatim}
+% Most useful options (with defaults):
+% echo        = TRUE     - includes R code in output file
+% keep.source = FALSE    - when echoing, if TRUE then original source is copied to the file, otherwise deparsed source is echoed.
+% eval        = TRUE     - if FALSE then chunk is not evaluated
+% results     = VERBATIM - R output included verbatim, if TEX output is already proper latex and included as is,
+%                          if HIDE then all output is completely suppressed (but the code executed - good for admb) results options should all be lower case (else get warnings)
+% pdf         = TRUE     - whether .pdf figures shall be generated
+% eps         = TRUE     - whether .eps figures shall be generated
+% strip.white = FALSE    - if true then blank lines at beginning and end of output are removed. If all, then all blank lines are removed.
+% width       = 6        - width of figures in inches
+% height      = 6        - height of figures in inches
+% fig         = FALSE    - whether the code chunk produces graphical output (only one per chunk)
+
+% \setkeys{Gin}{width=6in}     % from googling sweave figure bigger.
+%  It will set this for the rest of document [doesn't width do that in the above?]
+
+
+\begin{center}
+{\LARGE Pacific TESA budget summary for 2018-2019}
+
+%  {\tt nSeaFungAnalysis.Snw}}
+
+% \chapter{Create index for Ser.~ B: all hooks, 1995, 1996 and 2003-2014 series}
+
+Andrew Edwards
+
+\today{}
+\end{center}
+
+Summary of Pacific TESA budget,
+% including Ecosystem Approach workshop
+showing funds to be transferred to other collators to subsidise travel to TESA events. Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}. Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
+
+**Not sure yet: Money will be moved by {\bf Budget Transfers} (like last year), {\bf after five-month review}.
+<<setupR, echo=FALSE, results=hide>>=
+require(dplyr)
+require(xtable)
+# require(gplots)                 # for plotCI
+# require(boot)
+# require(PBSmapping)             # for .createIDs
+rm(list=ls())
+
+source("../../size-spectra-man2/code/s_dplyr_funcs.r")     # helper functions that allow string arguments,
+                                #  by Sebastian Kranz.
+figheight = 7 # 6
+figwidth = 5.7
+@
+
+<<calcs, echo=FALSE, results=hide>>=
+funds = read.csv("TESAfunds18.csv", header=TRUE, comment.char="#",
+    strip.white=TRUE); funds     # Need strip.white else it adds space
+                                 #  for commented parts
+funds = tbl_df(funds)
+# funds$Amount = as.numeric(as.character(funds$Amount))   # Else saves as factors
+
+funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
+
+total = sum(funds$Subsidy)
+
+funds = rbind(funds, data.frame(Event =  "Total",
+                                Person = NA,
+                                Subsidy = total,
+                                Est.costs = NA,
+                                Section = NA,
+                                Sec.costs = NA))
+
+fundsTab = xtable(funds, caption="Funding available for each person. `Subsidy' is
+ the funding from TESA, `Est.costs' are the estimated total travel and course costs
+ for each person, `Section' is the division if not StAR, `Sec.costs' are costs
+ needed to be funded for each person from local budgets.", lab="tab:funds")
+
+qams = filter(funds, Section == "QAMS")
+
+qams = rbind(qams, data.frame(Event =  "Total",
+                              Person = NA,
+                              Subsidy = sum(qams$Subsidy),
+                              Est.costs = sum(qams$Est.costs),
+                              Section = NA,
+                              Sec.costs = sum(qams$Sec.costs)))
+
+qamsTab = xtable(qams, caption="Just people in QAMS.", lab="tab:qams")
+
+ins = filter(funds, Section == "INS")
+
+ins = rbind(ins, data.frame(Event =  "Total",
+                              Person = NA,
+                              Subsidy = sum(ins$Subsidy),
+                              Est.costs = sum(ins$Est.costs),
+                              Section = NA,
+                              Sec.costs = sum(ins$Sec.costs)))
+
+insTab = xtable(ins, caption="Just people in Inshore Section.", lab="tab:qams")
+
+
+sal = filter(funds, Section == "SAL")
+
+sal = rbind(sal, data.frame(Event =  "Total",
+                              Person = NA,
+                              Subsidy = sum(sal$Subsidy),
+                              Est.costs = sum(sal$Est.costs),
+                              Section = NA,
+                              Sec.costs = sum(sal$Sec.costs)))
+
+salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", lab="tab:qams")
+
+
+@
+
+
+<<results=tex, echo=FALSE>>=
+print(fundsTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+
+print(qamsTab, table.placement="th", caption.placement="top",
+    include.rownames = FALSE)
+
+print(insTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+
+print(salTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+@
+
+\end{document}
+
+<<>>=
+stop("stopping here")
+@
+
+
+% From 2017 - not going to do the grouping this time I think, just get people to
+%  claim directly as a JV from their travel claim.
+<<dataSumm, echo=FALSE, results=hide>>=
+total.budget = 29400
+directSumm = filter(funds, Coding == "Direct")
+directSummTotal = sum(directSumm$Amount, na.rm=TRUE )
+directSumm = rbind(directSumm, data.frame( Event =  "Sum", Coding = NA,
+    Person = NA, Description = NA, Amount = directSummTotal))
+
+transferInd = filter(funds, Coding != "Direct")
+transferIndTotal = sum(transferInd$Amount, na.rm=TRUE )
+transferInd = rbind(transferInd, data.frame( Event =  "Sum", Coding = NA,
+    Person = NA, Description = NA, Amount = transferIndTotal))
+# select(transferInd, Person)      # to send emails
+
+transferSumm = summarise(group_by(funds, Coding), Total = sum(Amount))
+transferSumm = filter(transferSumm, Coding != "Direct")
+transferTotal = sum(transferSumm$Total, na.rm=TRUE )
+# transferSumm = rbind(transferSumm, c(as.factor("Sum"), transferTotal))
+#  Above one doesn't work because c(..) has a factor and a numeric
+transferSumm = rbind(transferSumm, data.frame( Coding =  "Sum", Total = transferTotal))
+
+expenditures = directSummTotal + transferIndTotal
+
+overall = data.frame( Description = c("Total budget", "Total expenditures",
+    "Net balance"),
+    Amount = c(total.budget, -expenditures, total.budget - expenditures))
+@
+
+
+<<tables, echo=FALSE, results=hide>>=
+directSummTab = xtable(directSumm, caption="Amounts coming directly out of TESA collator.", lab="tab:direct")
+
+transferIndTab = xtable(transferInd, caption="Amounts for individuals receive into their coding via budget transfers from the TESA collator 51880-810-120-xxxx-90766. Zane likely to be replaced for TMB course (once dates finalised). Lyse got a bit less due to already claiming something (next page). Brianna's coding is SARA so may need another one. TBC - To Be Confirmed.", lab="tab:transInd")
+
+transferSummTab = xtable(transferSumm, caption="Totals to be moved to each coding via budget transfers.", lab="tab:transSumm")
+
+overallTab = xtable(overall, caption="Overall budget summary",
+    lab="tab:overall")
+@
+
+
+<<results=tex, echo=FALSE>>=
+
+print(transferIndTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+
+print(transferSummTab, table.placement="tp", caption.placement="top",
+    include.rownames = FALSE) #, sanitize.text.function=function(x){x})# was !ht
+
+print(directSummTab, table.placement="ht", caption.placement="top",
+    include.rownames = FALSE)
+
+print(overallTab, table.placement="hb", caption.placement="top",
+    include.rownames = FALSE)
+
+
+@
+
+
+\end{document}
