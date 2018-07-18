@@ -121,11 +121,38 @@ Andrew Edwards
 \today{}
 \end{center}
 
-Summary of Pacific TESA budget,
-% including Ecosystem Approach workshop
-showing funds to be transferred to other collators to subsidise travel to TESA events. Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}. Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
+Summary of Pacific TESA budget, which will be JV'ed to individual's collators
+after the events to subsidise travel and registration costs. Some funds are for
+us hosting the TTT workshop.
 
-**Not sure yet: Money will be moved by {\bf Budget Transfers} (like last year), {\bf after five-month review}.
+Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}. 
+
+The Events are:
+
+\begin{itemize}
+  
+\item Intro -- Introduction to Stock Assessment Course, 19-23 November 2018, Moncton.
+ That's the five-day course that will come after the free series of Webinars
+ (that will be advertised in the fall).
+
+\item TTT -- Workshop on Transparent, Traceable and Transferable (TTT) assessments in 
+ DFO, Nanaimo, 27-30 November 2018 (note that these dates changed from the earlier
+ announcement).
+
+\item TMB2 -- Template Model Builder II, Halifax, 17-21 December 2018.
+
+\item Invert -- Invertebrate Assessment Workshop, Mont-Joli, 10-14 December 2018.
+
+\item Zero -- Zero-inflated Models by Highland Statistics (Alain Zuur), Nanaimo,
+ 7-11 January 2019. The course costs \$995 per participant and we won't need travel
+ costs, so I'm assuming that we'll get half of each Pacific participant's
+ registration covered.
+
+ \end{itemize}
+
+%Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
+
+%**Not sure yet: Money will be moved by {\bf Budget Transfers} (like last year), {\bf after five-month review}.
 <<setupR, echo=FALSE, results=hide>>=
 require(dplyr)
 require(xtable)

@@ -15,9 +15,9 @@ TTT, Catarina Wor, 0, 0, SAL
 TTT, Shannon Obradovich, 0, 0, INS
 TTT, Jackie King, 0, 0, ESD
 
-# Insert assessment
-Insert, Shannon Obradovich, 2050, 2853, INS
-Insert, Zane Zhang, 2050, 2853, QAMS
+# Invert assessment
+Invert, Shannon Obradovich, 2050, 2853, INS
+Invert, Zane Zhang, 2050, 2853, QAMS
 
 # TMB2
 TMB2, Robyn Forrest, 1500, 3800, QAMS
@@ -36,5 +36,5 @@ Zero, Catarina Wor, 500, 1000, SAL
 Zero, Jennifer Boldt, 500, 1000, ESD
 
 # TTT hosting
-TTThosting, Local costs, 2000, 2021.25, NA    # ** may need to change to 180
-TTThosting, Ian Taylor, 2000, 2000, NA
+TTThosting, Local costs, 2022, 2022, NA    # ** may need to change to 180
+TTThosting, Ian Taylor, 1978, 1978, NA
