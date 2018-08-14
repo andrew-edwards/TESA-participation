@@ -4,8 +4,11 @@
 #  ....23-July-2018.xlsx - updating from that.
 Intro, Ann-Marie Huang, 1500, 2576, SAL
 Intro, Michelle Bigg, 1500, 2576, INS
-Intro, Erika Anderson, 1500, 2576, SAL
+Intro, **Erika Anderson, 1500, 2576, SAL
 Intro, Cameron Freshwater, 1500, 2576, QAMS
+# Waiting list:
+# None
+
 
 # TTT particants
 TTT, Kendra Holt, 0, 0, QAMS
@@ -17,17 +20,32 @@ TTT, Shannon Obradovich, 0, 0, INS
 TTT, Jackie King, 0, 0, ESD
 TTT, Erika Anderson, 0, 0, SAL
 # Not sure why we're allocated 200 - just add that onto TTThosting Local costs
+# People coming as helpers:
+# Andrew Edwards
+# Chris Grandin
+# Matt Grinnel
+# Sean Anderson
+
+
+# Wait list from original interest and then further emails):
+# Carrie Holt
+# Elise Keppel
+# Cameron Freshwater
+# Hai Nguyen
+
 
 # Invert assessment
 Invert, Shannon Obradovich, 2050, 2853, INS
 Invert, Zane Zhang, 2050, 2853, QAMS
+# No wait list
 
 # TMB2
-TMB2, Robyn Forrest, 1800, 3800, QAMS
+TMB2, Robyn Forrest, 1800, 3800, QAMS     # May be replaced by Sean
 TMB2, Jaclyn Cleary, 1800, 3800, QAMS
 TMB2, Andrew Edwards, 1800, 3800, QAMS
 TMB2, Catarina Wor, 1800, 3800, SAL
 TMB2, Brooke Davis, 1800, 3800, QAMS
+# No wait list
 
 # Zero-inflated
 Zero, Brianna Wright, 429, 1000, ESD
@@ -37,6 +55,11 @@ Zero, Andrew Edwards, 429, 1000, QAMS
 Zero, Jackie King, 428, 1000, ESD     # Reduce by $1 to avoid rounding errors
 Zero, Catarina Wor, 428, 1000, SAL
 Zero, Jennifer Boldt, 428, 1000, ESD
+# Wait list:
+# Jessica Nephin
+# Lily Burke
+# Natasha Salter
+# Hai Nguyen
 
 # TTT hosting
 TTThosting, Local costs, 2400, 2400, NA   # includes the 200 still in TTT participants
