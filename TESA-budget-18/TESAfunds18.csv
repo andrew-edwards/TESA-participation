@@ -1,6 +1,7 @@
 "Event", "Person", "Subsidy", "Est costs", "Section"   #, "Amount", "Coding"
 # Get the Amount from the 
 #  TESA 2018-19 Master Spreadsheet_6_July-2018.xlsx. Not quite final.
+#  ....23-July-2018.xlsx - updating from that.
 Intro, Ann-Marie Huang, 1500, 2576, SAL
 Intro, Michelle Bigg, 1500, 2576, INS
 Intro, Erika Anderson, 1500, 2576, SAL
@@ -14,27 +15,29 @@ TTT, Jaclyn Cleary, 0, 0, QAMS
 TTT, Catarina Wor, 0, 0, SAL
 TTT, Shannon Obradovich, 0, 0, INS
 TTT, Jackie King, 0, 0, ESD
+TTT, Erika Anderson, 0, 0, SAL
+# Not sure why we're allocated 200
 
 # Invert assessment
 Invert, Shannon Obradovich, 2050, 2853, INS
 Invert, Zane Zhang, 2050, 2853, QAMS
 
 # TMB2
-TMB2, Robyn Forrest, 1500, 3800, QAMS
-TMB2, Jaclyn Cleary, 1500, 3800, QAMS
-TMB2, Andrew Edwards, 1500, 3800, QAMS
-TMB2, Catarina Wor, 1500, 3800, SAL
-TMB2, Brooke Davis, 1500, 3800, QAMS
+TMB2, Robyn Forrest, 1800, 3800, QAMS
+TMB2, Jaclyn Cleary, 1800, 3800, QAMS
+TMB2, Andrew Edwards, 1800, 3800, QAMS
+TMB2, Catarina Wor, 1800, 3800, SAL
+TMB2, Brooke Davis, 1800, 3800, QAMS
 
 # Zero-inflated
-Zero, Brianna Wright, 500, 1000, ESD
-Zero, Dana Haggarty, 500, 1000, GF
-Zero, Shannon Obradovich, 500, 1000, INS
-Zero, Andrew Edwards, 500, 1000, QAMS
-Zero, Jackie King, 500, 1000, ESD
-Zero, Catarina Wor, 500, 1000, SAL
-Zero, Jennifer Boldt, 500, 1000, ESD
+Zero, Brianna Wright, 429, 1000, ESD
+Zero, Dana Haggarty, 429, 1000, GF
+Zero, Shannon Obradovich, 429, 1000, INS
+Zero, Andrew Edwards, 429, 1000, QAMS
+Zero, Jackie King, 429, 1000, ESD
+Zero, Catarina Wor, 429, 1000, SAL
+Zero, Jennifer Boldt, 429, 1000, ESD
 
 # TTT hosting
-TTThosting, Local costs, 2022, 2022, NA    # ** may need to change to 180
-TTThosting, Ian Taylor, 1978, 1978, NA
+TTThosting, Local costs, 2200, 2200, NA
+TTThosting, Ian Taylor, 2000, 2000, NA

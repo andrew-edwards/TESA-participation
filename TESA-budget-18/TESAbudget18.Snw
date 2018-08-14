@@ -125,17 +125,17 @@ Summary of Pacific TESA budget, which will be JV'ed to individual's collators
 after the events to subsidise travel and registration costs. Some funds are for
 us hosting the TTT workshop.
 
-Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}. 
+Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}.
 
 The Events are:
 
 \begin{itemize}
-  
+
 \item Intro -- Introduction to Stock Assessment Course, 19-23 November 2018, Moncton.
  That's the five-day course that will come after the free series of Webinars
  (that will be advertised in the fall).
 
-\item TTT -- Workshop on Transparent, Traceable and Transferable (TTT) assessments in 
+\item TTT -- Workshop on Transparent, Traceable and Transferable (TTT) assessments in
  DFO, Nanaimo, 27-30 November 2018 (note that these dates changed from the earlier
  announcement).
 
@@ -188,7 +188,7 @@ funds = rbind(funds, data.frame(Event =  "Total",
 fundsTab = xtable(funds, caption="Funding available for each person. `Subsidy' is
  the funding from TESA, `Est.costs' are the estimated total travel and course costs
  for each person, `Section' is the division if not StAR, `Sec.costs' are costs
- needed to be funded for each person from local budgets.", lab="tab:funds")
+ needed to be funded for each person from local budgets.", label="tab:funds")
 
 qams = filter(funds, Section == "QAMS")
 
@@ -199,7 +199,7 @@ qams = rbind(qams, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(qams$Sec.costs)))
 
-qamsTab = xtable(qams, caption="Just people in QAMS.", lab="tab:qams")
+qamsTab = xtable(qams, caption="Just people in QAMS.", label="tab:qams")
 
 ins = filter(funds, Section == "INS")
 
@@ -210,7 +210,7 @@ ins = rbind(ins, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(ins$Sec.costs)))
 
-insTab = xtable(ins, caption="Just people in Inshore Section.", lab="tab:qams")
+insTab = xtable(ins, caption="Just people in Inshore Section.", label="tab:qams")
 
 
 sal = filter(funds, Section == "SAL")
@@ -222,7 +222,7 @@ sal = rbind(sal, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(sal$Sec.costs)))
 
-salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", lab="tab:qams")
+salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", label="tab:qams")
 
 
 @
@@ -280,14 +280,14 @@ overall = data.frame( Description = c("Total budget", "Total expenditures",
 
 
 <<tables, echo=FALSE, results=hide>>=
-directSummTab = xtable(directSumm, caption="Amounts coming directly out of TESA collator.", lab="tab:direct")
+directSummTab = xtable(directSumm, caption="Amounts coming directly out of TESA collator.", label="tab:direct")
 
-transferIndTab = xtable(transferInd, caption="Amounts for individuals receive into their coding via budget transfers from the TESA collator 51880-810-120-xxxx-90766. Zane likely to be replaced for TMB course (once dates finalised). Lyse got a bit less due to already claiming something (next page). Brianna's coding is SARA so may need another one. TBC - To Be Confirmed.", lab="tab:transInd")
+transferIndTab = xtable(transferInd, caption="Amounts for individuals receive into their coding via budget transfers from the TESA collator 51880-810-120-xxxx-90766. Zane likely to be replaced for TMB course (once dates finalised). Lyse got a bit less due to already claiming something (next page). Brianna's coding is SARA so may need another one. TBC - To Be Confirmed.", label="tab:transInd")
 
-transferSummTab = xtable(transferSumm, caption="Totals to be moved to each coding via budget transfers.", lab="tab:transSumm")
+transferSummTab = xtable(transferSumm, caption="Totals to be moved to each coding via budget transfers.", label="tab:transSumm")
 
 overallTab = xtable(overall, caption="Overall budget summary",
-    lab="tab:overall")
+    label="tab:overall")
 @
 
 
