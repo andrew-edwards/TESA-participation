@@ -16,7 +16,7 @@ TTT, Catarina Wor, 0, 0, SAL
 TTT, Shannon Obradovich, 0, 0, INS
 TTT, Jackie King, 0, 0, ESD
 TTT, Erika Anderson, 0, 0, SAL
-# Not sure why we're allocated 200
+# Not sure why we're allocated 200 - just add that onto TTThosting Local costs
 
 # Invert assessment
 Invert, Shannon Obradovich, 2050, 2853, INS
@@ -34,10 +34,10 @@ Zero, Brianna Wright, 429, 1000, ESD
 Zero, Dana Haggarty, 429, 1000, GF
 Zero, Shannon Obradovich, 429, 1000, INS
 Zero, Andrew Edwards, 429, 1000, QAMS
-Zero, Jackie King, 429, 1000, ESD
-Zero, Catarina Wor, 429, 1000, SAL
-Zero, Jennifer Boldt, 429, 1000, ESD
+Zero, Jackie King, 428, 1000, ESD     # Reduce by $1 to avoid rounding errors
+Zero, Catarina Wor, 428, 1000, SAL
+Zero, Jennifer Boldt, 428, 1000, ESD
 
 # TTT hosting
-TTThosting, Local costs, 2200, 2200, NA
+TTThosting, Local costs, 2400, 2400, NA   # includes the 200 still in TTT participants
 TTThosting, Ian Taylor, 2000, 2000, NA
