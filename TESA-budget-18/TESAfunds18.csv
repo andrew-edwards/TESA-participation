@@ -4,16 +4,16 @@
 #  ....23-July-2018.xlsx - updating from that.
 Intro, Ann-Marie Huang, 1500, 2576, SAL
 Intro, Christine Hansen, 1500, 2576, INS
-Intro, Elise Keppel, 1500, 2576, GF
+# Intro, Elise Keppel, 1500, 2576, GF
 Intro, Cameron Freshwater, 1500, 2576, QAMS
 # Waiting list:
 # None
 
 
 # TTT particants
-TTT, Kendra Holt, 0, 0, QAMS
+TTT, Kendra Holt, 500, 0, QAMS
 TTT, Carrie Holt, 0, 0, GF
-TTT, Brooke Davis, 0, 0, QAMS 
+TTT, Brooke Davis, 500, 0, QAMS 
 TTT, Jaclyn Cleary, 0, 0, QAMS
 TTT, Catarina Wor, 0, 0, SAL
 TTT, Shannon Obradovich, 0, 0, INS
@@ -21,7 +21,7 @@ TTT, Jackie King, 0, 0, ESD
 TTT, Erika Anderson, 0, 0, SAL
 TTT, Cameron Freshwater, 0, 0, QAMS   # Was on wait list but me adding as
                                       #  there's always cancellations
-TTT, Hai Nguyen, 0, 0, INS            # Ditto
+TTT, Brendan Connors, 500, 0, INS            # Ditto
 
 # Not sure why we're allocated 200 - just add that onto TTThosting Local costs
 # People coming as helpers:
