@@ -125,7 +125,7 @@ Summary of Pacific TESA budget, which will be JV'ed to individual's collators
 after the events to subsidise travel and registration costs. Some funds are for
 us hosting the TTT workshop.
 
-Pacific TESA collator is {\tt 51880-810-120-xxxx-90766}.
+Pacific TESA collator is {\tt 51880-805-120-xxxx-90766}.
 
 The Events are:
 
@@ -292,7 +292,7 @@ overall = data.frame( Description = c("Total budget", "Total expenditures",
 <<tables, echo=FALSE, results=hide>>=
 directSummTab = xtable(directSumm, caption="Amounts coming directly out of TESA collator.", label="tab:direct")
 
-transferIndTab = xtable(transferInd, caption="Amounts for individuals receive into their coding via budget transfers from the TESA collator 51880-810-120-xxxx-90766. Zane likely to be replaced for TMB course (once dates finalised). Lyse got a bit less due to already claiming something (next page). Brianna's coding is SARA so may need another one. TBC - To Be Confirmed.", label="tab:transInd")
+transferIndTab = xtable(transferInd, caption="Amounts for individuals receive into their coding via budget transfers from the TESA collator 51880-805-120-xxxx-90766. Zane likely to be replaced for TMB course (once dates finalised). Lyse got a bit less due to already claiming something (next page). Brianna's coding is SARA so may need another one. TBC - To Be Confirmed.", label="tab:transInd")
 
 transferSummTab = xtable(transferSumm, caption="Totals to be moved to each coding via budget transfers.", label="tab:transSumm")
 
