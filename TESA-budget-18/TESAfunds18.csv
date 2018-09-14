@@ -50,9 +50,9 @@ Zero, Brianna Wright, 429, 1000, ESD
 Zero, Dana Haggarty, 429, 1000, GF
 Zero, Shannon Obradovich, 429, 1000, INS
 Zero, Andrew Edwards, 429, 1000, QAMS
-Zero, Jackie King, 428, 1000, ESD     # Reduce by $1 to avoid rounding errors
-Zero, Catarina Wor, 428, 1000, SAL
-Zero, Jennifer Boldt, 428, 1000, ESD
+Zero, Jackie King, 429, 1000, ESD 
+Zero, Catarina Wor, 429, 1000, SAL
+Zero, Jennifer Boldt, 428, 1000, ESD     # Reduce by $1 to avoid rounding errors
 # Wait list:
 # Jessica Nephin
 # Lily Burke

@@ -124,8 +124,8 @@ Andrew Edwards
 Summary of Pacific TESA budget to subsidise participants' travel and registration
 costs, and to host the TTT workshop.
 
-{\bf Update (14/9/18)}: I have just found out that the TESA money from Ottawa 
-was taxed by the Region at 15\%, so there is less money to subsidise participation than 
+{\bf Update (14/9/18)}: I have just found out that the TESA money from Ottawa
+was taxed by the Region at 15\%, so there is less money to subsidise participation than
 originally thought. Please see Table~1 for the updated subsidies -- the shortfalls
 will have to come out of local budgets.
 The costs for hosting the workshop are fixed and so I cannot reduce those (hence
@@ -201,16 +201,34 @@ funds = read.csv("TESAfunds18.csv", header=TRUE, comment.char="#",
 funds = tbl_df(funds)
 # funds$Amount = as.numeric(as.character(funds$Amount))   # Else saves as factors
 
-funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
+# 15% tax - easier to work out here than adjust the .csv. Need to keep TTT workshop
+#  costs the same, so work out reduction factor needed for the rest.
 
-total = sum(funds$Subsidy)
+total = (sum(funds$Subsidy)-2)*0.85    # -2 is the extra $1 added to Jackie and
+                                       #  Catarina for rounding
+
+reduction = (total - 4400)/(26500 - 4400)
+
+funds = mutate(funds, Subsidy = round(Subsidy * reduction))
+
+funds[funds$Event == "TTThosting", "Subsidy"] =
+         round(funds[funds$Event == "TTThosting", "Subsidy"] / reduction)
+                                           # un-reduce TTThosting costs
+
+funds$Subsidy = as.integer(funds$Subsidy)
+total.check = sum(funds$Subsidy)
+if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
+
+funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
 
 funds = rbind(funds, data.frame(Event =  "Total",
                                 Person = NA,
-                                Subsidy = total,
+                                Subsidy = as.integer(total),
                                 Est.costs = NA,
                                 Section = NA,
                                 Sec.costs = NA))
+
+
 
 fundsTab = xtable(funds, caption="Funding available for each person. `Subsidy' is
  the funding from TESA, `Est.costs' are the estimated total travel and course costs
