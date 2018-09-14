@@ -21,7 +21,7 @@ TTT, Jackie King, 0, 0, ESD
 TTT, Erika Anderson, 0, 0, SAL
 TTT, Cameron Freshwater, 0, 0, QAMS   # Was on wait list but me adding as
                                       #  there's always cancellations
-TTT, Brendan Connors, 500, 900, INS            # Ditto
+TTT, Brendan Connors, 500, 900, QAMS            # Ditto
 
 # Not sure why we're allocated 200 - just add that onto TTThosting Local costs
 # People coming as helpers:
@@ -46,13 +46,13 @@ TMB2, Brooke Davis, 1800, 3800, QAMS
 # No wait list
 
 # Zero-inflated
-Zero, Brianna Wright, 429, 1000, ESD
-Zero, Dana Haggarty, 429, 1000, GF
-Zero, Shannon Obradovich, 429, 1000, INS
-Zero, Andrew Edwards, 429, 1000, QAMS
-Zero, Jackie King, 429, 1000, ESD 
-Zero, Catarina Wor, 429, 1000, SAL
-Zero, Jennifer Boldt, 428, 1000, ESD     # Reduce by $1 to avoid rounding errors
+Zero, Brianna Wright, 429, 945, ESD
+Zero, Dana Haggarty, 429, 945, GF
+Zero, Shannon Obradovich, 429, 945, INS
+Zero, Andrew Edwards, 429, 945, QAMS
+Zero, Jackie King, 429, 945, ESD 
+Zero, Catarina Wor, 429, 945, SAL
+Zero, Jennifer Boldt, 428, 945, ESD     # Reduce by $1 to avoid rounding errors
 # Wait list:
 # Jessica Nephin
 # Lily Burke
