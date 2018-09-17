@@ -13,7 +13,7 @@ Intro, Cameron Freshwater, 1500, 2576, QAMS
 # TTT particants
 TTT, Kendra Holt, 500, 900, QAMS
 TTT, Carrie Holt, 0, 0, GF
-TTT, Brooke Davis, 500, 900, QAMS 
+# TTT, Brooke Davis, 500, 900, QAMS 
 TTT, Jaclyn Cleary, 0, 0, QAMS
 TTT, Catarina Wor, 0, 0, SAL
 TTT, Shannon Obradovich, 0, 0, INS
@@ -38,11 +38,11 @@ Invert, Zane Zhang, 2050, 2853, QAMS
 # No wait list
 
 # TMB2
-TMB2, Sean Anderson, 1800, 3800, GF     # Replacing Robyn
-TMB2, Jaclyn Cleary, 1800, 3800, QAMS
-TMB2, Andrew Edwards, 1800, 3800, QAMS
-TMB2, Catarina Wor, 1800, 3800, SAL
-TMB2, Brooke Davis, 1800, 3800, QAMS
+TMB2, Sean Anderson, 1900, 3800, GF     # Replacing Robyn
+TMB2, Jaclyn Cleary, 1900, 3800, QAMS
+TMB2, Andrew Edwards, 1900, 3800, QAMS
+TMB2, Catarina Wor, 1900, 3800, SAL
+TMB2, Brooke Davis, 1900, 3800, QAMS
 # No wait list
 
 # Zero-inflated
