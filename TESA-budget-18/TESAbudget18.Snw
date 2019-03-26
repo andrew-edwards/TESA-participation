@@ -22,7 +22,7 @@
 
 % \usepackage{resDocSty}   % Res Doc .sty file
 \usepackage{graphicx}
-
+\usepackage{xcolor}
 \usepackage{mathptmx}    % Should have Times plus math fonts.
 
 
@@ -140,9 +140,13 @@ After you have charged your travel/registration costs to your own collator,
 please get your admin person to JV the {\bf subsidy amount} to the Pacific TESA
 collator:
 
-~~~~~~~~~~~{\tt 51880-805-120-xxxx-90766}.
+~~~~~~~~~~~{\tt 51880-\textcolor{red}{810}-120-xxxx-90766}
+%{\bf and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+%  her know}.
 
-\noindent Please do {\bf not} mention this collator when booking travel etc. on SRG,
+\noindent \textcolor{red}{and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+her know.}
+Please do {\bf not} mention this collator when booking travel etc. on SRG,
 just JV the
 subsidy when you
 do your travel report (or credit card expense).
