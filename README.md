@@ -7,7 +7,7 @@ Code to summarise TESA participation from Google Forms results, and to keep trac
 
 1. Create a Google Form based on the events being offerred. I've copied the 2018-19 one to a new 2019-20 one (https://docs.google.com/forms/d/1Zl7X5j03p11pSeBArDWNikW2wRacM_LGdzsOZsC2vh8/edit - that may be accessible), and will invite Brooke as a collaborator. Haven't changed the questions yet (as don't know what the events will be).
 
-2. Send out email to potential interested people. I think that should be StAR and ESD, plus Diana Dobson (ask her to forward on), and check that Joel Harding gets it (through whatever channel, I think Diana).
+2. Send out email to potential interested people. I think that should be StAR and ESD, plus Diana Dobson (ask her to forward on), and check that Joel Harding gets it (through whatever channel, I think Diana). June 2019 - chatted with Brooke, we'll just send to XPAC SC-ALL-STAFF. Also can mention that the R webinars may be of more general use (and will be advertised later).
 
 3. Save the results from Google Form as a .csv file. For 2018-2019 I hadn't changed the title of the Google Form from 2017 to 2018 so it still saves as `Pacific TESA participation 2017-18.csv`. Just renamed it to `TESA18-19.csv` when unzipping.
 
