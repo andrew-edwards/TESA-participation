@@ -67,13 +67,14 @@ events = names(tab)[6:9]
 
 
 
-# One table for each event, just keeping what's needed for spreadsheet
+# One table for each event, just keeping what's needed for spreadsheet, though want Division to help rank
 #  sym() is from https://edwinth.github.io/blog/dplyr-recipes/ thanks
 #  to Sean Anderson.
 for(i in 1:length(events)){
     temp = filter(tab, !!sym(events[i]) != "")
     temp = select(temp,
                   Region,
+                  Division,
                   Priority,
                   Name,
                   Location,
