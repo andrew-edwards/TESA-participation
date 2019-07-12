@@ -36,28 +36,28 @@ Spatial, Matt Grinnell, spatial_sub, 3500, QAMS
 
 
 # Data poor. trav is people who have to travel, reg are Nanaimo based.
-DataPoor, Brooke Davis, trav, trav_sub, QAMS
-DataPoor, Carrie Holt, reg, reg_sub, QAMS
-DataPoor, Shannon Obradovich, reg, reg_sub, INV
-DataPoor, Christine Hansen, reg, reg_sub, INV
-DataPoor, Nicholas Komick, reg, reg_sub, INV
-DataPoor, Joel Harding, trav, trav_sub, WH
-DataPoor, Charmaine Carr-Harris, trav, trav_sub, PR  # Prince Rupert
-DataPoor, Katie Beach, trav, trav_sub, PR
-DataPoor, Michael Arbeider, trav, trav_sub, KAM      # ...loops
+DataPoor, Brooke Davis, trav_sub, trav, QAMS
+DataPoor, Carrie Holt, reg_sub, reg, QAMS
+DataPoor, Shannon Obradovich, reg_sub, reg, INV
+DataPoor, Christine Hansen, reg_sub, reg, INV
+DataPoor, Nicholas Komick, reg_sub, reg, INV
+DataPoor, Joel Harding, trav_sub, trav, WH
+DataPoor, Charmaine Carr-Harris, trav_sub, trav, PR  # Prince Rupert
+DataPoor, Katie Beach, trav_sub, trav, PR
+DataPoor, Michael Arbeider, trav_sub, trav, KAM      # ...loops
 # Waiting list
 # Matthew Townsend
 # Kaitlyn Dionne
 # Daniel Doutaz
 
 # Risk workshop
-Risk, Robyn Forrest, 2200, risk_sub, QAMS
-Risk, Sean Anderson, 2200, risk_sub, GF
-Risk, Carrie Holt, 2200, risk_sub, QAMS
-Risk, Andrew Edwards, 2200, risk_sub, QAMS
-Risk, Dominique Bureau, 2200, risk_sub, INV
-Risk, Ann-marie Huang, 2200, risk_sub, SAL
-Risk, Kendra Holt, 2200, risk_sub, QAMS
+Risk, Robyn Forrest, risk_sub, 2200, QAMS
+Risk, Sean Anderson, risk_sub, 2200, GF
+Risk, Carrie Holt, risk_sub, 2200, QAMS
+Risk, Andrew Edwards, risk_sub, 2200, QAMS
+Risk, Dominique Bureau, risk_sub, 2200, INV
+Risk, Ann-marie Huang, risk_sub, 2200, SAL
+Risk, Kendra Holt, risk_sub, 2200, QAMS
 # Waiting list
 # Catarina Wor
 # Dana Haggarty
@@ -70,4 +70,4 @@ Risk, Kendra Holt, 2200, risk_sub, QAMS
 
 
 # Data poor hosting
-PoorHosting, Local costs, poor_cost, 2500, NA   # subsidy needs correcting after tax
+PoorHosting, Local costs, host_sub, poor_cost, NA   # subsidy needs correcting after tax

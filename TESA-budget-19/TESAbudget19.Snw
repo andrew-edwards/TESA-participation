@@ -165,7 +165,7 @@ The Events are:
 
 %Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
 
-%**Not sure yet: Money will be moved by {\bf Budget Transfers} (like last year), {\bf after five-month review}.
+%Money will be moved by {\bf Budget Transfers} (like last year).
 <<setupR, echo=FALSE, results=hide>>=
 require(dplyr)
 require(xtable)
