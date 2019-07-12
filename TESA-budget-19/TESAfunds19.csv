@@ -1,0 +1,73 @@
+"Event", "Person", "Subsidy", "Est costs", "Section"   #, "Amount", "Coding"
+# Base the Amounts from
+#  TESA 2019-20 Master Spreadsheet_24_JUN-2019.xlsx
+#  Though because of tax and two extra spots for workshop need to rejig the amounts in some R code.
+
+# Participants from TESA 2019-20 Course_Participants_annotated.xslx (as of 12 July).
+
+
+# Intro
+Intro, Elise Keppel, intro_sub, 3100, GF
+Intro, Amy Ganton, intro_sub, 3100, INV
+Intro, Kate McGivney, intro_sub, 3100, NC  # North Coast
+Intro, Vesta Mather, intro_sub, 3100, FM
+Intro, Dan Curtis, intro_sub, 3100, INV
+# Waiting list:
+# Daniel Doutaz
+# Matt Grinnell
+
+
+# Spatial
+Spatial, Robyn Forrest, spatial_sub, 3500, QAMS
+Spatial, Carrie Holt, spatial_sub, 3500, QAMS
+Spatial, Chris Grandin, spatial_sub, 3500, GF
+Spatial, Shannon Obradovich, spatial_sub, 3500, INV
+Spatial, Matt Grinnell, spatial_sub, 3500, QAMS
+# Waiting list:
+# Jackie King
+# Brianna Wright
+# Jennifer Boldt
+# Sarah Davies
+# Doug Braun
+# Andrew Edwards
+# Hilari Dennis-Bohm
+# Hai Nguyen
+# Ann-marie Huang
+
+
+# Data poor. trav is people who have to travel, reg are Nanaimo based.
+DataPoor, Brooke Davis, trav, trav_sub, QAMS
+DataPoor, Carrie Holt, reg, reg_sub, QAMS
+DataPoor, Shannon Obradovich, reg, reg_sub, INV
+DataPoor, Christine Hansen, reg, reg_sub, INV
+DataPoor, Nicholas Komick, reg, reg_sub, INV
+DataPoor, Joel Harding, trav, trav_sub, WH
+DataPoor, Charmaine Carr-Harris, trav, trav_sub, PR  # Prince Rupert
+DataPoor, Katie Beach, trav, trav_sub, PR
+DataPoor, Michael Arbeider, trav, trav_sub, KAM      # ...loops
+# Waiting list
+# Matthew Townsend
+# Kaitlyn Dionne
+# Daniel Doutaz
+
+# Risk workshop
+Risk, Robyn Forrest, 2200, risk_sub, QAMS
+Risk, Sean Anderson, 2200, risk_sub, GF
+Risk, Carrie Holt, 2200, risk_sub, QAMS
+Risk, Andrew Edwards, 2200, risk_sub, QAMS
+Risk, Dominique Bureau, 2200, risk_sub, INV
+Risk, Ann-marie Huang, 2200, risk_sub, SAL
+Risk, Kendra Holt, 2200, risk_sub, QAMS
+# Waiting list
+# Catarina Wor
+# Dana Haggarty
+# Shannon Obradovich
+# Mike Hawkshaw
+# Chris Grandin
+# Nicholas Komick
+# Joel Harding
+# Michael Arbeider
+
+
+# Data poor hosting
+PoorHosting, Local costs, poor_cost, 2500, NA   # subsidy needs correcting after tax
