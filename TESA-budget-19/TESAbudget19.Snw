@@ -177,6 +177,22 @@ figheight = 7 # 6
 figwidth = 5.7
 @
 
+<<subsidies, echo=FALSE, results=hide>>=
+# work out the subsidies to each person. can't just use Susan's numbers due to 15% tax and having
+#  subsidise two extra workshop participants. Just play here with the numbers to get something
+#  that works. Try taking 1000 off the three courses (before tax) and give to workshop.
+
+pac_total = 30430              # after tax
+intro_sub = 5.7 * 0.85
+spatial_sub = 9.5 * 0.85
+poor_reg_sub = 300             # subsidy for 4 registration-only Nanaimo people
+poor_trav_sub = 1000               # subsidy for 5 who have to travel to Nanaimo
+risk_sub = 1300
+host_sub = 2500
+# Then use join or something to update the table.... HERE
+@
+
+
 <<calcs, echo=FALSE, results=hide>>=
 funds = read.csv("TESAfunds19.csv", header=TRUE, comment.char="#",
     strip.white=TRUE); funds     # Need strip.white else it adds space
