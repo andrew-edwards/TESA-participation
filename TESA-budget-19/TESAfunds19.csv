@@ -1,4 +1,7 @@
 "Event", "Person", "Subsidy", "Est costs", "Section"   #, "Amount", "Coding"
+# Update this when people change, and update Susan's master spreadsheet at
+#  \\svmonkenclu01.ENT.dfo-mpo.ca\natshare01\TESA-ETES\2019-20 Participant Lists
+
 # Base the Amounts from
 #  TESA 2019-20 Master Spreadsheet_24_JUN-2019.xlsx
 #  Though because of tax and two extra spots for workshop need to rejig the amounts in some R code.
@@ -21,7 +24,7 @@ Intro, Dan Curtis, intro_sub, 3100, INV
 Spatial, Robyn Forrest, spatial_sub, 3500, QAMS
 Spatial, Carrie Holt, spatial_sub, 3500, QAMS
 Spatial, Chris Grandin, spatial_sub, 3500, GF
-Spatial, Shannon Obradovich, spatial_sub, 3500, INV
+Spatial, Hai Nguyen, spatial_sub, 3500, INV
 Spatial, Jackie King, spatial_sub, 3500, ESD
 # Waiting list:
 # Brianna Wright
@@ -30,7 +33,6 @@ Spatial, Jackie King, spatial_sub, 3500, ESD
 # Doug Braun
 # Andrew Edwards
 # Hilari Dennis-Bohm
-# Hai Nguyen
 # Ann-marie Huang
 
 
