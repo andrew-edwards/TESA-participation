@@ -37,15 +37,15 @@ Spatial, Jackie King, spatial_sub, 3500, ESD
 
 
 # Data poor. trav is people who have to travel, reg are Nanaimo based.
-DataPoor, Brooke Davis, trav_sub, trav, QAMS
-DataPoor, Carrie Holt, reg_sub, reg, QAMS
-DataPoor, Shannon Obradovich, reg_sub, reg, INV
-DataPoor, Christine Hansen, reg_sub, reg, INV
-DataPoor, Nicholas Komick, reg_sub, reg, INV
-DataPoor, Joel Harding, trav_sub, trav, WH
-DataPoor, Charmaine Carr-Harris, trav_sub, trav, PR  # Prince Rupert
-DataPoor, Katie Beach, trav_sub, trav, PR
-DataPoor, Michael Arbeider, trav_sub, trav, KAM      # ...loops
+DataPoor, Brooke Davis, poor_trav_sub_Van, trav, QAMS
+DataPoor, Carrie Holt, poor_reg_sub, reg, QAMS
+DataPoor, Shannon Obradovich, poor_reg_sub, reg, INV
+DataPoor, Christine Hansen, poor_reg_sub, reg, INV
+DataPoor, Nicholas Komick, poor_reg_sub, reg, INV
+DataPoor, Joel Harding, poor_trav_sub, trav, WH
+DataPoor, Charmaine Carr-Harris, poor_trav_sub, trav, PR  # Prince Rupert
+DataPoor, Katie Beach, poor_trav_sub, trav, PR
+DataPoor, Michael Arbeider, poor_trav_sub, trav, KAM      # ...loops
 # Waiting list
 # Matthew Townsend
 # Kaitlyn Dionne

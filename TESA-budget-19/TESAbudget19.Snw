@@ -119,10 +119,17 @@ Andrew Edwards and Brooke Davis
 Summary of Pacific TESA budget to subsidise participants' travel and registration
 costs, and to host the Data Poor course.
 
-CHECK DETAILS:
+Please follow these instructions:
 
-After you have charged your travel/registration costs to your own collator,
-please get your admin person to JV the {\bf subsidy amount} to the Pacific TESA
+1. At some point you should hear from the local organisers of each event.
+If you are unable to attend please tell both the local organiser (once you know who
+that is) so they can update their attendance list, and also tell Andrew Edwards and
+Brooke Davis so that we can update our budget list offer the spot to someone on
+the waitlist.
+{\bf We will continue to assume that you are attending unless you tell us otherwise}.
+
+2. After you have charged your travel/registration costs to your own collator,
+please get your admin person to JV the {\bf subsidy amount} (see table) to the Pacific TESA
 collator:
 
 ~~~~~~~~~~~{\tt 51880-\textcolor{red}{810}-120-xxxx-90766}
@@ -131,17 +138,11 @@ collator:
 
 \noindent \textcolor{red}{and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 her know.}
+
 Please do {\bf not} mention this collator when booking travel etc. on SRG,
 just JV the
 subsidy when you
 do your travel report (or credit card expense).
-
-At some point you should hear from the local organisers of each event.
-If you are unable to attend please tell both the local organiser (once you know who
-that is) so they can update their attendance list, and also tell Andrew Edwards and
-Brooke Davis so that we can update our budget list offer the sport to someone on
-the waitlist.
-{\bf We will continue to assume that you are attending unless you tell us otherwise}.
 
 \medskip
 
@@ -178,18 +179,7 @@ figwidth = 5.7
 @
 
 <<subsidies, echo=FALSE, results=hide>>=
-# work out the subsidies to each person. can't just use Susan's numbers due to 15% tax and having
-#  subsidise two extra workshop participants. Just play here with the numbers to get something
-#  that works. Try taking 1000 off the three courses (before tax) and give to workshop.
-
 pac_total = 30430              # after tax
-intro_sub = 5.7 * 0.85
-spatial_sub = 9.5 * 0.85
-poor_reg_sub = 300             # subsidy for 4 registration-only Nanaimo people
-poor_trav_sub = 1000               # subsidy for 5 who have to travel to Nanaimo
-risk_sub = 1300
-host_sub = 2500
-# Then use join or something to update the table.... HERE
 @
 
 
@@ -203,8 +193,35 @@ funds = tbl_df(funds)
 # 15% tax - easier to work out here than adjust the .csv. Need to keep TTT workshop
 #  costs the same, so work out reduction factor needed for the rest.
 
-total = (sum(funds$Subsidy)-2)*0.85    # -2 is the extra $1 added to Jackie and
-                                       #  Catarina for rounding
+## This is how to replace the numbers.
+## x = funds$Subsidy
+## recode(x, intro_sub = 1000, spatial_sub = 200, trav_sub = 100, reg_sub = 50, risk_sub = 75, host_sub = 2000)
+
+# Work out the subsidies to each person. can't just use Susan's numbers due to 15% tax and having
+#  subsidise two extra workshop participants. Just play here with the numbers to get something
+#  that works. Try taking 1000 off the three courses (before tax) that Susan
+#  said and give to workshop.
+
+
+funds$Subsidy <- recode(funds$Subsidy,
+                        intro_sub = 1000,     # 696 = 5700 / 5 * 0.85
+                        spatial_sub = 1500,   # 1445 = 8500 / 5 * 0.85
+                        poor_reg_sub = 200,        # for 4 registration-only Nanaimo people
+                        poor_trav_sub = 1050,       # for 4 who have to travel to
+                                                    #  Nanaimo, not from Van. 7100*0.85 = 6035.
+                        poor_trav_sub_Van = 655,   # Brooke travel from Vancouver.
+                        risk_sub = 1400,
+                        host_sub = 2475)
+
+total = sum(funds$Subsidy)
+
+# manually check the ratios between ours and Susan's (ignoring local data-poor
+# amounts, and haven't done for new poor_trav_sub_Van):
+round(c(1000, 1500, 1050, 1400) / c(1340, 1900, 900, 1800), 2)
+# 0.75 0.78 1.00 0.78
+# close enough reductions. Poor_trav_sub includes registration, so isn't great
+# but travel costs not great.
+
 
 reduction = (total - 4400)/(26500 - 4400)
 
