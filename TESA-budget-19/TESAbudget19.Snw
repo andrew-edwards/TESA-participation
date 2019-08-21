@@ -179,15 +179,15 @@ figwidth = 5.7
 @
 
 <<subsidies, echo=FALSE, results=hide>>=
-pac_total = 30430              # after tax
+total = 30430              # after tax
 @
 
 
 <<calcs, echo=FALSE, results=hide>>=
-funds = read.csv("TESAfunds19.csv", header=TRUE, comment.char="#",
-    strip.white=TRUE); funds     # Need strip.white else it adds space
-                                 #  for commented parts
-funds = tbl_df(funds)
+funds_load = read.csv("TESAfunds19.csv", header=TRUE, comment.char="#",
+                       strip.white=TRUE)            # Need strip.white else it adds space
+                                                    #  for commented parts
+funds <- tbl_df(funds_load)
 # funds$Amount = as.numeric(as.character(funds$Amount))   # Else saves as factors
 
 # 15% tax - easier to work out here than adjust the .csv. Need to keep TTT workshop
@@ -207,13 +207,11 @@ funds$Subsidy <- recode(funds$Subsidy,
                         intro_sub = 1000,     # 696 = 5700 / 5 * 0.85
                         spatial_sub = 1500,   # 1445 = 8500 / 5 * 0.85
                         poor_reg_sub = 200,        # for 4 registration-only Nanaimo people
-                        poor_trav_sub = 1050,       # for 4 who have to travel to
+                        poor_trav_sub = 1100,       # for 4 who have to travel to
                                                     #  Nanaimo, not from Van. 7100*0.85 = 6035.
-                        poor_trav_sub_Van = 655,   # Brooke travel from Vancouver.
+                        poor_trav_sub_Van = 605,   # Brooke travel from Vancouver.
                         risk_sub = 1400,
-                        host_sub = 2475)
-
-total = sum(funds$Subsidy)
+                        host_sub = 2325)
 
 # manually check the ratios between ours and Susan's (ignoring local data-poor
 # amounts, and haven't done for new poor_trav_sub_Van):
@@ -223,17 +221,8 @@ round(c(1000, 1500, 1050, 1400) / c(1340, 1900, 900, 1800), 2)
 # but travel costs not great.
 
 
-reduction = (total - 4400)/(26500 - 4400)
-
-funds = mutate(funds, Subsidy = round(Subsidy * reduction))
-
-funds[funds$Event == "TTThosting", "Subsidy"] =
-         round(funds[funds$Event == "TTThosting", "Subsidy"] / reduction)
-                                           # un-reduce TTThosting costs
-
-funds$Subsidy = as.integer(funds$Subsidy)
 total.check = sum(funds$Subsidy)
-if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
+if(!identical(total, total.check)) stop("Check total and total.check.")
 
 funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
 
