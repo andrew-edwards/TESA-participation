@@ -117,8 +117,8 @@ Andrew Edwards and Brooke Davis
 \end{center}
 
 Summary of Pacific TESA budget to subsidise participants' travel and registration
-costs, and to host the Data Poor course. Tables 2-4 are summaries for Section
-Heads for sections with several attendees.
+costs, and to host the Data Poor course. Tables 2-5 are summaries for Section
+Heads for those sections with several attendees.
 
 \medskip
 
@@ -289,9 +289,21 @@ sal = rbind(sal, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(sal$Sec.costs)))
 
-salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", label="tab:qams",
+salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", label="tab:sal",
                 digits = 0)
 
+
+gf = filter(funds, Section == "GF")
+
+gf = rbind(gf, data.frame(Event =  "Total",
+                              Person = NA,
+                              Subsidy = sum(gf$Subsidy),
+                              Est.costs = sum(gf$Est.costs),
+                              Section = NA,
+                              Sec.costs = sum(gf$Sec.costs)))
+
+gfTab = xtable(gf, caption="Just people in Groundfish Section.", label="tab:gf",
+                digits = 0)
 
 @
 
@@ -307,6 +319,9 @@ print(invTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 
 print(salTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+
+print(gfTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 @
 
