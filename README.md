@@ -17,6 +17,8 @@ Code to summarise TESA participation from Google Forms results, and to keep trac
 
 ## Keeping track of participants and their subsidies
 
-6. Susan will send out a spreadsheet with participants' names and expected subsidy for each event (wasn't until July in 2018 though). Looks like I summarised that in `TESA-budget-18/TESAfunds18.csv`, to then process and create a .pdf in `TESA-budget-18/TESAfunds18.Snw`. Then when things change (people change etc.), I update the .csv and re-run it. So best to create a new `TESA-budget-19/` folder and use what I've done as a template. 
+6. Susan will send out a spreadsheet with participants' names and expected subsidy for each event (wasn't until July in 2018 though). Looks like I summarised that in `TESA-budget-18/TESAfunds18.csv`, to then process and create a .pdf in `TESA-budget-18/TESAfunds18.Snw`. Then when things change (people change etc.), I update the .csv and re-run it. So best to create a new `TESA-budget-19/` folder and use what I've done as a template. Have done that.
+
+7. **When participants change** - just change `TESAfunds19.csv`, re-build `TESAbudget19.pdf`,  and also update Susan's master spreadsheet on the shared folder at `\\svmonkenclu01.ENT.dfo-mpo.ca\natshare01\TESA-ETES`.
 
 This may seem a bit cumbersome, but we are the largest region, and for some regions this whole process is much simpler (the TESA reps will know most of the interested people anyway). 
