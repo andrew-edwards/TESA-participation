@@ -117,28 +117,41 @@ Andrew Edwards and Brooke Davis
 \end{center}
 
 Summary of Pacific TESA budget to subsidise participants' travel and registration
-costs, and to host the Data Poor course.
+costs, and to host the Data Poor course. Tables 2-4 are summaries for Section
+Heads for sections with several attendees.
+
+\medskip
 
 Please follow these instructions:
+
+\medskip
 
 1. At some point you should hear from the local organisers of each event.
 If you are unable to attend please tell both the local organiser (once you know who
 that is) so they can update their attendance list, and also tell Andrew Edwards and
-Brooke Davis so that we can update our budget list offer the spot to someone on
+Brooke Davis so that we can update our budget list and offer the spot to someone on
 the waitlist.
 {\bf We will continue to assume that you are attending unless you tell us otherwise}.
 
-2. After you have charged your travel/registration costs to your own collator,
-please get your admin person to JV the {\bf subsidy amount} (see table) to the Pacific TESA
+\medskip
+
+2. When the details of the course/workshop are finalised, you need to do your
+`Travel Request and Approval form' [formerly ITP], then book flights if needed
+through HRG. (Or just use your BTA if applicable). Please use your usual collator to
+book travel and claim expenses.
+
+\medskip
+
+3. {\bf After} you have charged your travel/registration costs to your own collator,
+please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
 collator:
 
-~~~~~~~~~~~{\tt 51880-\textcolor{red}{810}-120-xxxx-90766}
+~~~~~~~~~~~{\tt 51880-810-120-xxxx-90766}
 %{\bf and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 %  her know}.
 
 \noindent \textcolor{red}{and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 her know.}
-
 Please do {\bf not} mention this collator when booking travel etc. on SRG,
 just JV the
 subsidy when you
@@ -237,8 +250,10 @@ funds = rbind(funds, data.frame(Event =  "Total",
 
 fundsTab = xtable(funds, caption="Funding available for each person. `Subsidy' is
  the funding from TESA, `Est.costs' are the estimated total travel and course costs
- for each person, `Section' is the division if not StAR, `Sec.costs' are costs
- needed to be funded for each person from local budgets.", label="tab:funds")
+ for each person, `Section' is the section if within StAR, else the division or person's work location (or FM for Fisheries Management),
+ `Sec.costs' are the estimated costs
+ to be funded for each person from local budgets.", label="tab:funds",
+ digits = 0)
 
 qams = filter(funds, Section == "QAMS")
 
@@ -249,18 +264,20 @@ qams = rbind(qams, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(qams$Sec.costs)))
 
-qamsTab = xtable(qams, caption="Just people in QAMS.", label="tab:qams")
+qamsTab = xtable(qams, caption="Just people in QAMS.", label="tab:qams",
+                 digits = 0)
 
-ins = filter(funds, Section == "INS")
+inv = filter(funds, Section == "INV")
 
-ins = rbind(ins, data.frame(Event =  "Total",
+inv = rbind(inv, data.frame(Event =  "Total",
                               Person = NA,
-                              Subsidy = sum(ins$Subsidy),
-                              Est.costs = sum(ins$Est.costs),
+                              Subsidy = sum(inv$Subsidy),
+                              Est.costs = sum(inv$Est.costs),
                               Section = NA,
-                              Sec.costs = sum(ins$Sec.costs)))
+                              Sec.costs = sum(inv$Sec.costs)))
 
-insTab = xtable(ins, caption="Just people in Inshore Section.", label="tab:qams")
+invTab = xtable(inv, caption="Just people in Marine Invertebrates Section.", label="tab:inv",
+                digits = 0)
 
 
 sal = filter(funds, Section == "SAL")
@@ -272,7 +289,8 @@ sal = rbind(sal, data.frame(Event =  "Total",
                               Section = NA,
                               Sec.costs = sum(sal$Sec.costs)))
 
-salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", label="tab:qams")
+salTab = xtable(sal, caption="Just people in Salmon Assessment Section.", label="tab:qams",
+                digits = 0)
 
 
 @
@@ -285,7 +303,7 @@ print(fundsTab, table.placement="bh", caption.placement="top",
 print(qamsTab, table.placement="th", caption.placement="top",
     include.rownames = FALSE)
 
-print(insTab, table.placement="bh", caption.placement="top",
+print(invTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 
 print(salTab, table.placement="bh", caption.placement="top",
