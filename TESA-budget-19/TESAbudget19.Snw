@@ -234,14 +234,20 @@ round(c(1000, 1500, 1050, 1400) / c(1340, 1900, 900, 1800), 2)
 # but travel costs not great.
 
 
-total.check = sum(funds$Subsidy)
-if(!identical(total, total.check)) stop("Check total and total.check.")
+total.subsidy = sum(funds$Subsidy)
+@
+
+\noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total.subsidy} of
+  subsidy to distribute out of total received of \$\Sexpr{total}.}
+
+<<calcs2, echo=FALSE, results=hide>>=
+# if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
 
 funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
 
 funds = rbind(funds, data.frame(Event =  "Total",
                                 Person = NA,
-                                Subsidy = as.integer(total),
+                                Subsidy = as.integer(total.subsidy),
                                 Est.costs = NA,
                                 Section = NA,
                                 Sec.costs = NA))
