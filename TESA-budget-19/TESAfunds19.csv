@@ -37,18 +37,19 @@ Spatial, Jackie King, spatial_sub, 3500, ESD
 # Data poor. trav is people who have to travel, reg are Nanaimo based. Guessing those costs
 DataPoor, Brooke Davis, poor_trav_sub_Van, 1800, QAMS
 DataPoor, Carrie Holt, poor_reg_sub, 600, QAMS
-DataPoor, Shannon Obradovich, poor_reg_sub, 600, INV
+DataPoor, Shannon Obradovich - TO REPLACE, poor_reg_sub, 600, INV
 DataPoor, Christine Hansen, poor_reg_sub, 600, INV
 DataPoor, Nicholas Komick, poor_reg_sub, 600, SAL
-DataPoor, Joel Harding, poor_trav_sub, 2500, WH
+DataPoor, Joel Harding TO REPLACE, poor_trav_sub, 2500, WH
 DataPoor, Charmaine Carr-Harris, poor_trav_sub, 2500, PR  # Prince Rupert
 DataPoor, Katie Beach, poor_trav_sub, 2500, PR
 DataPoor, Michael Arbeider, poor_trav_sub, 2500, KAM      # ...loops
 # Waiting list
-# Matthew Townsend
-# Kaitlyn Dionne
-# Daniel Doutaz
-# Dana Haggarty - no subsidy but wants to go
+# Matthew Townsend - emailed 16th Oct, Annacis Island
+# Kaitlyn Dionne - said no
+# Daniel Doutaz - Brooke asking
+# Michael Folkes - Andy asked
+# Dana Haggarty - Andy asked
 
 # Risk workshop
 Risk, Robyn Forrest, risk_sub, 2200, QAMS
