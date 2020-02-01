@@ -39,7 +39,6 @@ DataPoor, Brooke Davis, poor_trav_sub_Van, 1800, QAMS
 DataPoor, Carrie Holt, poor_reg_sub, 600, QAMS
 DataPoor, Dana Haggarty, poor_reg_sub, 600, INV
 DataPoor, Christine Hansen, poor_reg_sub, 600, INV
-# DataPoor, Nicholas Komick, poor_reg_sub, 600, SAL
 DataPoor, Michael Folkes, poor_reg_sub, 2500, WH
 DataPoor, Charmaine Carr-Harris, poor_trav_sub, 2500, PR  # Prince Rupert
 DataPoor, Katie Beach, poor_trav_sub, 2500, PR
@@ -53,8 +52,7 @@ DataPoor, Michael Arbeider, poor_trav_sub, 2500, KAM      # ...loops
 Risk, Robyn Forrest, risk_sub, 2200, QAMS
 Risk, Sean Anderson, risk_sub, 2200, GF
 Risk, Carrie Holt, risk_sub, 2200, QAMS
-Risk, Andrew Edwards, risk_sub, 2200, QAMS
-Risk, Christine Hansen, risk_sub, 2200, INV
+Risk, Janet Lochead, risk_sub, 2200, INV
 Risk, Ann-marie Huang, risk_sub, 2200, SAL
 Risk, Kendra Holt, risk_sub, 2200, QAMS
 # Waiting list
@@ -69,4 +67,4 @@ Risk, Kendra Holt, risk_sub, 2200, QAMS
 
 
 # Data poor hosting
-PoorHosting, Local costs, host_sub, 2325, NA   # subsidy needs correcting after tax
+PoorHosting, Local costs, host_sub, 2442, NA
