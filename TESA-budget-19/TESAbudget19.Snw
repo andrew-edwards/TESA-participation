@@ -223,7 +223,7 @@ funds$Subsidy <- recode(funds$Subsidy,
                         poor_trav_sub = 1100,       # for 4 who have to travel to
                                                     #  Nanaimo, not from Van. 7100*0.85 = 6035.
                         poor_trav_sub_Van = 605,   # Brooke travel from Vancouver.
-                        risk_sub = 1400,
+                        risk_sub = 1963,
                         host_sub = 2442)
 
 # manually check the ratios between ours and Susan's (ignoring local data-poor
