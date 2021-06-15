@@ -1,3 +1,6 @@
+# requests21-22.r - import .csv file from Google Form (manually add a return at
+#  the end), and tidy up. Usually then just manually edit the spreadsheet. 15/6/21.
+
 # requests19-20.r - import .csv file from Google Form (manually add a return at the end)
 #  and this code tidies it up. 11th June 2019.
 #  At some point then usually just manually edit the spreadsheet.
@@ -11,24 +14,42 @@
 rm(list = ls())
 require(dplyr)
 
-tab = read.csv("Pacific TESA participation 2019-20.csv")
-tab = tbl_df(tab)
+# 34 responses
+tab_raw <- read.csv("Pacific TESA participation requests 2021-22.csv")
+tab <- tibble::as_tibble(tab_raw)
 
-names(tab)[names(tab) == "Work.location..to.estimate.travel.costs."] = "Location"
-names(tab)[names(tab) == "Five.day.Introduction.to.Stock.Assessment.Course"] =
-                            "IntroSA"
-names(tab)[names(tab) == "Spatial.Analysis.with.Geostatistics.and.R.INLA.Course"] = "Spatial"
-names(tab)[names(tab) ==
-       "Data.Poor.Stock.Assessment.Methods.Course"] = "DataPoor"
-names(tab)[names(tab) ==
-       "Uncertainty.and.Risk.in.Fisheries.Science.Advice.Workshop."] = "UncertWorkshop"
+tab <- dplyr::rename(tab,
+                     "Location" = "Work.location",
+                     "Ghement.linear.ts" =
+                       "X1..Linear.and.additive.models.for.time.series.data",
+                     "Ghement.advanced.ts" =
+                       "X2..Advanced.statistics.for.time.series.data",
+                     "PR.Bayesian" =
+                       "X3..Bayesian.data.analysis.and.introduction.to.STAN.modelling",
+                     "PR.wrangling" =
+                       "X4..Data.wrangling.and.visualization.in.R",
+                     "ICES.MSE" =
+                       "X5..ICES...Introduction.to.Management.Strategy.Evaluation",
+                     "ICES.SA" = "X6..ICES...Introduction.to.stock.assessment",
+                     "ICES.tagging" =
+                       "X7..ICES...Large.scale.tag.recapture.campaigns",
+                     "Workshop.ref.points" =
+                       "X8..Workshop...reference.points.for.Fish.Stocks.Provisions.",
+                     "Workshop.ageing" =
+                       "X9..Workshop...ageing.data.best.practices.for.stock.assessments",
+                     "PR.other.1" = "X10..PR.statistics...other.course",
+                     "PR.other.2" =
+                       "X11..PR.statistics...another.course..if.you.have.a.second.") %>%
+  select(-Timestamp)
 
+# Copy Lyanne's "Same answer as above":
+tab[which(tab$First.name == "Lyanne"), "Ghement.advanced.ts"]  <-
+  tab[which(tab$First.name == "Lyanne"), "Ghement.linear.ts"]
 
-tab = select(tab, -Timestamp)
-tab = mutate(tab, Name = paste(First.name, Surname),
+tab = mutate(tab,
              Region = "PAC",
              Priority = NA)
-events = names(tab)[6:9]
+events = names(tab)[6:16]
 
 # May need this based on 17-18 to shorten any long answers
 #tab = tbl_df(lapply(tab, function(x) {
@@ -36,36 +57,8 @@ events = names(tab)[6:9]
 #                       "TMB2", x) }) )
 
 
-# 2017-18 had to do all this manual stuff, but hopefully avoid this year
-#  (just fill the form for any late/new people? - or add manually to the main .csv)
-# Need to add Kathryn back in manually for DLMtool as I deleted her thinking
-#  I could add it to her response on the Form, but I can't. In future will
-#  be easier to stick with one answer per row for the form.
-# write.csv(file="temp.csv", tab)
-# Just do manually on a .csv file - not ideal but only a one off and save as
-#  temp2.csv to then reload in.
-# Doing the following - add Kathryn for DLMtool, split up those with ; into
-#  two rows, Remove (Murrell) from Erin's, bput Vanessa's division as ESD.
-# Adding Carrie in also, as she didn't do the form.
-# And updated since Sue Grant and Mike Hawkshaw now filled out form, plus
-#  Dawn and new BI-03 as per Arlene's email.
-# Adding Diana McHugh and Brittany Jenewein who filled out form (23/5/17).
-# Reordering manually. Remove Carrie and new BI-03 from Salmon.
-# Reordering for Salmon as per Carrie's email of 23/5/17
-# Reordering for ESD as per Eddy's email of 26/5/17
-# Adding Rob Kronlund for DLMtool. 7/6/17.
-
-#tab2 = read.csv("temp2.csv")
-#tab2 = tbl_df(tab2)
-#tab2 = select(tab2, -1)
-
-#tab2 = arrange(tab2, desc(Event))
-#print(as.data.frame(tab2))
-
 # I used descriptions for people to explain why they're interested in an event.
 #  So want to get a tbl_df for each event.
-
-
 
 # One table for each event, just keeping what's needed for spreadsheet, though want Division to help rank
 #  sym() is from https://edwinth.github.io/blog/dplyr-recipes/ thanks
@@ -73,20 +66,35 @@ events = names(tab)[6:9]
 for(i in 1:length(events)){
     temp = filter(tab, !!sym(events[i]) != "")
     temp = select(temp,
-                  Region,
+                  Surname,
+                  First.name,
+                  Email,
                   Division,
                   Priority,
-                  Name,
                   Location,
                   events[i])
+    print(events[i])
+    print(select(temp, -events[i]))
 #    assign(paste0(events[i], "-tab"),
 #           select(noquote(paste0(events[i], "-tab")),
-    assign(paste0(events[i], ".tab"), temp)
-    write.csv(file=paste0(events[i], ".csv"),
-              temp, quote = FALSE, row.names = FALSE)
-    write.csv(file=paste0(events[i], "noComm.csv"),
-              select(temp, Region, Priority, Name, Location),
-              quote = FALSE, row.names = FALSE)
+    #    assign(paste0(events[i], ".tab"), temp)
+    if(nrow(temp) > 0){
+      write.csv(file=paste0(events[i],
+                            ".csv"),
+                temp,
+                quote = FALSE,
+                row.names = FALSE)   # Use this to decide priority
+      write.csv(file=paste0(events[i],
+                            "noComm.csv"),
+                select(temp,
+                       Priority,
+                       Surname,
+                       First.name,
+                       Location),
+                quote = FALSE,
+                row.names = FALSE)         # Save this and then add
+                                           # in priorities manually
+    }
 
 }
 
@@ -104,9 +112,3 @@ for(i in 1:length(events)){
 # tabJustQAM = select(tabJustQAM, Surname, First.name, Event)
 
 # tabJustESD = filter(tab2, Division == "ESD", Event == "GLMM")
-
-
-print(as.data.frame(IntroSA.tab))
-print(Spatial.tab)
-print(DataPoor.tab)
-print(UncertWorkshop.tab)
