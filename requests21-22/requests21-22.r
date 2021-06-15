@@ -14,6 +14,7 @@
 rm(list = ls())
 require(dplyr)
 
+stop("Do not re-run as am now manually working out the Priority for each course. Have resaved all-requests-comments.csv as PAC-TESA-requets-21.csv. Manually add to that now")
 # 34 responses
 tab_raw <- read.csv("Pacific TESA participation requests 2021-22.csv")
 tab <- tibble::as_tibble(tab_raw)
@@ -79,23 +80,46 @@ for(i in 1:length(events)){
 #           select(noquote(paste0(events[i], "-tab")),
     #    assign(paste0(events[i], ".tab"), temp)
     if(nrow(temp) > 0){
-      write.csv(file=paste0(events[i],
-                            ".csv"),
-                temp,
-                quote = FALSE,
-                row.names = FALSE)   # Use this to decide priority
-      write.csv(file=paste0(events[i],
-                            "noComm.csv"),
-                select(temp,
-                       Priority,
-                       Surname,
-                       First.name,
-                       Location),
-                quote = FALSE,
-                row.names = FALSE)         # Save this and then add
-                                           # in priorities manually
-    }
+      # Individual files for each event (though in 2021 lots of events, so doing
+      # one big one
+      if(FALSE){
+        write.csv(file=paste0(events[i],
+                              ".csv"),
+                  temp,
+                  quote = FALSE,
+                  row.names = FALSE)   # Use this to decide priority
+        write.csv(file=paste0(events[i],
+                              "noComm.csv"),
+                  select(temp,
+                         Priority,
+                         Surname,
+                         First.name,
+                         Location),
+                  quote = FALSE,
+                  row.names = FALSE)         # Save this and then add in priorities manually
+      }
 
+      # Try just doing to one file:
+      temp <- rbind(rep(",", length(names(temp))),
+                    c(names(temp)[length(names(temp))],
+                      rep(",", length(names(temp))-1)),
+                    temp)
+      append <- ifelse(i == 1, FALSE, TRUE)   # appending if not first one
+      if(!append){
+        col.names <- names(temp)
+        col.names[length(col.names)] = "Comment"
+      } else {
+        col.names = FALSE
+      }
+      write.table(file = "all-requests-comments.csv",
+                  temp,
+                  quote = TRUE,
+                  sep = ",",
+                  row.names = FALSE,
+                  append = append,
+                  col.names = col.names)
+
+    }
 }
 
 # print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
