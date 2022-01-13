@@ -14,7 +14,7 @@
 rm(list = ls())
 require(dplyr)
 
-stop("Do not re-run as am now manually working out the Priority for each course. Have resaved all-requests-comments.csv as PAC-TESA-requets-21.csv. Manually add to that now")
+# stop("Do not re-run as am now manually working out the Priority for each course. Have resaved all-requests-comments.csv as PAC-TESA-requets-21.csv. Manually add to that now")
 # 34 responses
 tab_raw <- read.csv("Pacific TESA participation requests 2021-22.csv")
 tab <- tibble::as_tibble(tab_raw)
