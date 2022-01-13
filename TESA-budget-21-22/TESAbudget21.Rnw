@@ -11,7 +11,7 @@
 \topmargin -10mm
 \addtolength{\textwidth}{1.0in}
 \addtolength{\oddsidemargin}{-0.5in}
-\usepackage{Sweave}
+
 \usepackage{epsfig}
 % \usepackage{rotating}           % For sideways table
 % \usepackage{lineno}
@@ -90,7 +90,14 @@
 
 \begin{document}
 
-\SweaveOpts{pdf=FALSE, echo=TRUE, results=verbatim}
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+echo=TRUE, results='markup'
+)
+@
+
 % Most useful options (with defaults):
 % echo        = TRUE     - includes R code in output file
 % keep.source = FALSE    - when echoing, if TRUE then original source is copied to the file, otherwise deparsed source is echoed.
@@ -180,7 +187,7 @@ The Events are:
 %Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
 
 %Money will be moved by {\bf Budget Transfers} (like last year).
-<<setupR, echo=FALSE, results=hide>>=
+<<setupR, echo=FALSE, results='hide'>>=
 require(dplyr)
 require(xtable)
 rm(list=ls())
@@ -191,12 +198,12 @@ figheight = 7 # 6
 figwidth = 5.7
 @
 
-<<subsidies, echo=FALSE, results=hide>>=
+<<subsidies, echo=FALSE, results='hide'>>=
 total = 30430              # after tax
 @
 
 
-<<calcs, echo=FALSE, results=hide>>=
+<<calcs, echo=FALSE, results='hide'>>=
 funds_load = read.csv("TESAfunds19.csv", header=TRUE, comment.char="#",
                        strip.white=TRUE)            # Need strip.white else it adds space
                                                     #  for commented parts
@@ -240,7 +247,7 @@ total.subsidy = sum(funds$Subsidy)
 \noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total.subsidy} of
   subsidy to distribute out of total received of \$\Sexpr{total}.}
 
-<<calcs2, echo=FALSE, results=hide>>=
+<<calcs2, echo=FALSE, results='hide'>>=
 # if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
 
 funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
@@ -314,7 +321,7 @@ gfTab = xtable(gf, caption="Just people in Groundfish Section.", label="tab:gf",
 @
 
 
-<<results=tex, echo=FALSE>>=
+<<results='asis', echo=FALSE>>=
 print(fundsTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 
