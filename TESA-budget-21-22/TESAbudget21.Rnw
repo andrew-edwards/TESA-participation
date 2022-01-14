@@ -116,15 +116,17 @@ echo=TRUE, results='markup'
 
 
 \begin{center}
-{\LARGE Pacific TESA budget summary for 2019-2020}
+{\LARGE Pacific TESA budget summary for 2021-2022}
 
-Andrew Edwards and Brooke Davis
+Andrew Edwards % and Brooke Davis
 
 \today{}
 \end{center}
 
-Summary of Pacific TESA budget to subsidise participants' travel and registration
-costs, and to host the Data Poor course. Tables 2-5 are summaries for Section
+Summary of Pacific TESA budget to subsidise participants'
+% travel and
+registration
+costs. Tables 2-5 are summaries for Section
 Heads for those sections with several attendees.
 
 \medskip
@@ -133,60 +135,58 @@ Please follow these instructions:
 
 \medskip
 
-1. At some point you should hear from the local organisers of each event.
-If you are unable to attend please tell both the local organiser (once you know who
-that is) so they can update their attendance list, and also tell Andrew Edwards and
-Brooke Davis so that we can update our budget list and offer the spot to someone on
-the waitlist.
-{\bf We will continue to assume that you are attending unless you tell us otherwise}.
+%% 1. At some point you should hear from the local organisers of each event.
+%% If you are unable to attend please tell both the local organiser (once you know who
+%% that is) so they can update their attendance list, and also tell Andrew Edwards and
+%% Brooke Davis so that we can update our budget list and offer the spot to someone on
+%% the waitlist.
+%% {\bf We will continue to assume that you are attending unless you tell us otherwise}.
 
-\medskip
+%% \medskip
 
-2. When the details of the course/workshop are finalised, you need to do your
-`Travel Request and Approval form' [formerly ITP], then book flights if needed
-through HRG. (Or just use your BTA if applicable). Please use your usual collator to
-book travel and claim expenses.
+%% 2. When the details of the course/workshop are finalised, you need to do your
+%% `Travel Request and Approval form' [formerly ITP], then book flights if needed
+%% through HRG. (Or just use your BTA if applicable). Please use your usual collator to
+%% book travel and claim expenses.
 
-\medskip
+%% \medskip
 
 3. {\bf After} you have charged your travel/registration costs to your own collator,
-please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
+**TODO please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
 collator:
 
 ~~~~~~~~~~~{\tt 51880-810-120-xxxx-90766}
 %{\bf and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 %  her know}.
 
-\noindent \textcolor{red}{and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+\noindent \textcolor{red}{**and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 her know.}
-Please do {\bf not} mention this collator when booking travel etc. on SRG,
-just JV the
-subsidy when you
-do your travel report (or credit card expense).
+%% Please do {\bf not} mention this collator when booking travel etc. on SRG,
+%% just JV the
+%% subsidy when you
+%% do your travel report (or credit card expense).
 
 \medskip
 
-The Events are:
+The Events that we are subsidizing are (the two Ghement courses were paid
+directly by TESA):
 
 \begin{itemize}
 
-\item Intro -- Introduction to Stock Assessment Course, 25-29 November 2019,
-  St. Andrews, New Brunswick.
+\item PR.Bayesian -- PR Statistics course on either `Bayesian Data Analysis'
+  or `Introduction to Stan Modelling'
 
-\item Spatial -- Spatial Analysis with Geostatistics and R-INLA Course,
-  18th-22nd November, 2019, Winnipeg, Manitoba.
+\item PR.wrangling -- PR Statistics course on `Data Wrangling and Visualisation in R'
 
-\item DataPoor -- Data Poor Stock Assessment Methods, 6th-10th January 2020,
-  Nanaimo, British Columbia. Dates to be finalised but are fairly certain.
+\item ICES.MSE -- ICES course on Management Strategy Evaluation
 
-\item Risk -- Workshop on Uncertainty and Risk in Fisheries Science Advice, and Standardized Stock Summaries,
-  most probably 27th-31st January 2020, Ottawa, Ontario.
+\item Blue.Matter.MSE - Blue Matter Course on Management Strategy Evaluation
 
  \end{itemize}
 
 %Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
 
-%Money will be moved by {\bf Budget Transfers} (like last year).
+%Money will be moved by {\bf Budget Transfers} maybe for 2021-22???.
 <<setupR, echo=FALSE, results='hide'>>=
 require(dplyr)
 require(xtable)
@@ -198,53 +198,67 @@ figheight = 7 # 6
 figwidth = 5.7
 @
 
+NEED TO: check total TESA budget, and what people paid for each course.
+
 <<subsidies, echo=FALSE, results='hide'>>=
-total = 30430              # after tax
+total = 30430              # CHECK
 @
 
 
 <<calcs, echo=FALSE, results='hide'>>=
-funds_load = read.csv("TESAfunds19.csv", header=TRUE, comment.char="#",
-                       strip.white=TRUE)            # Need strip.white else it adds space
-                                                    #  for commented parts
-funds <- tbl_df(funds_load)
-# funds$Amount = as.numeric(as.character(funds$Amount))   # Else saves as factors
+orig_load <- read.csv("../requests21-22/PAC-TESA-requests-21-to-Natl-offerred-accepted.csv",
+                     header = TRUE,
+                     comment.char = "#",
+                     strip.white = TRUE) %>% as_tibble()
 
-# 15% tax - easier to work out here than adjust the .csv. Need to keep TTT workshop
-#  costs the same, so work out reduction factor needed for the rest.
+# Now convert to something useful
+funds <- select(orig_load,
+                Surname,
+                Email,
+                Cost,
+                Subsidy,
+                Division,
+                Taken.spot.,
+                Course) %>%
+  rename(Taken.spot = Taken.spot.) %>%
+  dplyr::filter(Taken.spot == "Y" & Course != "GA") %>%
+  mutate_at(vars(Division, Taken.spot, Division, Course), factor)
 
-## This is how to replace the numbers.
-## x = funds$Subsidy
-## recode(x, intro_sub = 1000, spatial_sub = 200, trav_sub = 100, reg_sub = 50, risk_sub = 75, host_sub = 2000)
+no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
+                                        # set to 0 further down.
 
-# Work out the subsidies to each person. can't just use Susan's numbers due to 15% tax and having
-#  subsidise two extra workshop participants. Just play here with the numbers to get something
-#  that works. Try taking 1000 off the three courses (before tax) that Susan
-#  said and give to workshop.
+# Do the subsidies here:
+Blue_sub <- 1417.15
+ICES.MSE_sub <- 1    # NOT SURE YET
+PR.Bayesian_sub <- 490 # CHECK
+PR.wrangling_sub <- 650 # CHECK
 
+funds[funds$Course == "Blue.Matter.MSE", "Subsidy"]  <- Blue_sub
+funds[funds$Course == "ICES.MSE", "Subsidy"]  <- ICES.MSE_sub
+funds[funds$Course == "PR.Bayesian", "Subsidy"]  <- PR.Bayesian_sub
+funds[funds$Course == "PR.wranling", "Subsidy"]  <- PR.wrangling_sub
 
-funds$Subsidy <- recode(funds$Subsidy,
-                        intro_sub = 1000,     # 696 = 5700 / 5 * 0.85
-                        spatial_sub = 1500,   # 1445 = 8500 / 5 * 0.85
-                        poor_reg_sub = 200,        # for 4 registration-only Nanaimo people
-                        poor_trav_sub = 1100,       # for 4 who have to travel to
-                                                    #  Nanaimo, not from Van. 7100*0.85 = 6035.
-                        poor_trav_sub_Van = 605,   # Brooke travel from Vancouver.
-                        risk_sub = 1963,
-                        host_sub = 2442)
+# Then set to 0 for those that don't need subsidy
+funds[no_sub_needed_index, "Subsidy"] = 0
 
-# manually check the ratios between ours and Susan's (ignoring local data-poor
-# amounts, and haven't done for new poor_trav_sub_Van):
-round(c(1000, 1500, 1050, 1400) / c(1340, 1900, 900, 1800), 2)
-# 0.75 0.78 1.00 0.78
-# close enough reductions. Poor_trav_sub includes registration, so isn't great
-# but travel costs not great.
+total_sub = sum(funds$Subsidy)
 
 
-total.subsidy = sum(funds$Subsidy)
+
+# How I did it for 2019-20:
+# funds$Subsidy <- recode(funds$Subsidy,
+#                         intro_sub = 1000,     # 696 = 5700 / 5 * 0.85
+#                         spatial_sub = 1500,   # 1445 = 8500 / 5 * 0.85
+#                         poor_reg_sub = 200,        # for 4 registration-only Nanaimo people
+#                         poor_trav_sub = 1100,       # for 4 who have to travel to
+#                                                     #  Nanaimo, not from Van. 7100*0.85 = 6035.
+#                         poor_trav_sub_Van = 605,   # Brooke travel from Vancouver.
+#                         risk_sub = 1963,
+#                         host_sub = 2442)
 @
 
-\noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total.subsidy} of
+
+\noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total_sub} of
   subsidy to distribute out of total received of \$\Sexpr{total}.}
 
 <<calcs2, echo=FALSE, results='hide'>>=
