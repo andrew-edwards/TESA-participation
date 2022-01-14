@@ -261,22 +261,21 @@ total_sub = sum(funds$Subsidy)
 <<calcs2, echo=FALSE, results='hide'>>=
 # if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
 
-funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
+# funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
 
-funds = rbind(funds, data.frame(Event =  "Total",
-                                Person = NA,
-                                Subsidy = as.integer(total.subsidy),
-                                Est.costs = NA,
-                                Section = NA,
-                                Sec.costs = NA))
+funds_table = rbind(funds,
+                    tibble(Surname =  "Total",
+                               Email = NA,
+                               Cost = NA,
+                               Subsidy = as.integer(total_sub),
+                               Division = NA,
+                               Taken.spot = NA,
+                               Course = NA)) %>%
+  select(-c("Division", "Taken.spot"))
 
-
-
-fundsTab = xtable(funds, caption="Funding available for each person. `Subsidy' is
- the funding from TESA, `Est.costs' are the estimated total travel and course costs
- for each person, `Section' is the section if within StAR, else the division or person's work location (or FM for Fisheries Management),
- `Sec.costs' are the estimated costs
- to be funded for each person from local budgets.", label="tab:funds",
+fundsTab = xtable(funds_table,
+ caption="Funding available for each person. `Cost' is the cost of the course, `Subsidy' is  the funding from TESA. The `PR.Bayesian' course corresponds to both the Introduction course and the Stan course (so some people appear twice).",
+ label="tab:funds",
  digits = 0)
 @
 
