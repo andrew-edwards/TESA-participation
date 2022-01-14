@@ -201,9 +201,8 @@ figwidth = 5.7
 NEED TO: check total TESA budget, and what people paid for each course.
 
 <<subsidies, echo=FALSE, results='hide'>>=
-total = 30430              # CHECK
+total = 21250
 @
-
 
 <<calcs, echo=FALSE, results='hide'>>=
 orig_load <- read.csv("../requests21-22/PAC-TESA-requests-21-to-Natl-offerred-accepted.csv",
@@ -228,22 +227,20 @@ no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
                                         # set to 0 further down.
 
 # Do the subsidies here:
-Blue_sub <- 1417.15
-ICES.MSE_sub <- 1    # NOT SURE YET
+Blue_sub <- 1418
+ICES.MSE_sub <- 1076
 PR.Bayesian_sub <- 490 # CHECK
 PR.wrangling_sub <- 650 # CHECK
 
-funds[funds$Course == "Blue.Matter.MSE", "Subsidy"]  <- Blue_sub
+funds[funds$Course == "Blue.Matter.MSE", "Subsidy"] <- Blue_sub
 funds[funds$Course == "ICES.MSE", "Subsidy"]  <- ICES.MSE_sub
 funds[funds$Course == "PR.Bayesian", "Subsidy"]  <- PR.Bayesian_sub
-funds[funds$Course == "PR.wranling", "Subsidy"]  <- PR.wrangling_sub
+funds[funds$Course == "PR.wrangling", "Subsidy"]  <- PR.wrangling_sub
 
 # Then set to 0 for those that don't need subsidy
 funds[no_sub_needed_index, "Subsidy"] = 0
 
 total_sub = sum(funds$Subsidy)
-
-
 
 # How I did it for 2019-20:
 # funds$Subsidy <- recode(funds$Subsidy,
