@@ -96,6 +96,7 @@ library(knitr)
 opts_chunk$set(
 echo=TRUE, results='markup'
 )
+options(scipen = 8)
 @
 
 % Most useful options (with defaults):
@@ -229,12 +230,14 @@ no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
 # Do the subsidies here:
 Blue_sub <- 1418
 ICES.MSE_sub <- 1076
-PR.Bayesian_sub <- 490 # CHECK
+PR.Bayesian.Intro_sub <- 650
+PR.Bayesian.Stan_sub <- 350
 PR.wrangling_sub <- 650 # CHECK
 
 funds[funds$Course == "Blue.Matter.MSE", "Subsidy"] <- Blue_sub
 funds[funds$Course == "ICES.MSE", "Subsidy"]  <- ICES.MSE_sub
-funds[funds$Course == "PR.Bayesian", "Subsidy"]  <- PR.Bayesian_sub
+funds[funds$Course == "PR.Bayesian.Intro", "Subsidy"]  <- PR.Bayesian.Intro_sub
+funds[funds$Course == "PR.Bayesian.Stan", "Subsidy"]  <- PR.Bayesian.Stan_sub
 funds[funds$Course == "PR.wrangling", "Subsidy"]  <- PR.wrangling_sub
 
 # Then set to 0 for those that don't need subsidy
@@ -256,7 +259,7 @@ total_sub = sum(funds$Subsidy)
 
 
 \noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total_sub} of
-  subsidy to distribute out of total received of \$\Sexpr{total}.}
+  subsidy to distribute out of total received of \$\Sexpr{total-0}.}
 
 <<calcs2, echo=FALSE, results='hide'>>=
 # if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
