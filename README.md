@@ -5,13 +5,15 @@ Code to summarise TESA participation from Google Forms results, and to keep trac
 
 ## To get interest from participants
 
-1. Create a Google Form based on the events being offerred. I've copied the 2018-19 one to a new 2019-20 one (https://docs.google.com/forms/d/1Zl7X5j03p11pSeBArDWNikW2wRacM_LGdzsOZsC2vh8/edit - that may be accessible), and will invite Brooke as a collaborator. Haven't changed the questions yet (as don't know what the events will be).
+1. Create a Google Form based on the events being offerred. I've copied the 2018-19 one to a new 2019-20 one (https://docs.google.com/forms/d/1Zl7X5j03p11pSeBArDWNikW2wRacM_LGdzsOZsC2vh8/edit - that may be accessible), and will invite Brooke as a collaborator. Haven't changed the questions yet (as don't know what the events will be). 2022 is https://docs.google.com/forms/d/1qTZFMa9jhiFcl75hTy1esAFy1AfgUN-vB-snaD3CiOg/edit 
 
-2. Send out email to potential interested people. I think that should be StAR and ESD, plus Diana Dobson (ask her to forward on), and check that Joel Harding gets it (through whatever channel, I think Diana). June 2019 - chatted with Brooke, we'll just send to XPAC SC-ALL-STAFF. Also can mention that the R webinars may be of more general use (and will be advertised later).
+2. Send out email to potential interested people. Originally though should be StAR and ESD, plus Diana Dobson (ask her to forward on), and check that Joel Harding gets it (through whatever channel, I think Diana). June 2019 - chatted with Brooke, we'll just send to XPAC SC-ALL-STAFF. Also can mention that the R webinars may be of more general use (and will be advertised later). 2022: XPAC SC-ALL-STAFF seems to be replaced by DFO.R PAC Science - I expanded that list and then deleted BMD and CHS. And emailed Dawn Lewis to tell the Area Chiefs.
 
-3. Save the results from Google Form as a .csv file. For 2018-2019 I hadn't changed the title of the Google Form from 2017 to 2018 so it still saves as `Pacific TESA participation 2017-18.csv`. Just renamed it to `TESA18-19.csv` when unzipping.
+3. Save the results from Google Form as a .csv file. 
 
-4. Update the code `requests18-19.r` for 2019-20. It takes in the output from the .csv file and I think just spits out a list of interested participants for each event, which then get copied into the spreadsheet that Susan (or someone) in Ottawa will send out. One thing - the list to Ottawa should be prioritised (there's usually excess demand for spaces), so I think I just do that in the spreadsheet, partly based on participants' responses. In the past I think I have verified rankings with John and Eddy (and once with Carmel), but they just agree with what I've done.
+4. Update the code, currently `requests21-22.r`. It takes in the output from the .csv file and I think just spits out a list of interested participants for each event, which then get copied into the spreadsheet that Susan (or someone) in Ottawa will send out. One thing - the list to Ottawa should be prioritised (there's usually excess demand for spaces), so I think I just do that in the spreadsheet, partly based on participants' responses. In the past I think I have verified rankings with John and Eddy (and once with Carmel), but they just agree with what I've done.
+
+To update for 2022-23:
 
 5. Then the regions' requests will get merged by Susan - there's a bit of haggling to get extra people on courses, though there's always people that later drop out of things (so a few extras on each event are okay).
 
