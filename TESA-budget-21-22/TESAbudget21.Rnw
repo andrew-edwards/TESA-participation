@@ -127,14 +127,15 @@ Andrew Edwards % and Brooke Davis
 Summary of Pacific TESA budget to subsidise participants'
 % travel and
 registration
-costs. Tables 2-5 are summaries for Section
-Heads for those sections with several attendees.
+costs.
+%Tables 2-5 are summaries for Section
+%Heads for those sections with several attendees.
 
-\medskip
+% \medskip
 
-Please follow these instructions:
+% Please follow these instructions:
 
-\medskip
+% \medskip
 
 %% 1. At some point you should hear from the local organisers of each event.
 %% If you are unable to attend please tell both the local organiser (once you know who
@@ -152,22 +153,20 @@ Please follow these instructions:
 
 %% \medskip
 
-3. {\bf After} you have charged your travel/registration costs to your own collator,
-**TODO please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
-collator:
+% 3. {\bf After} you have charged your travel/registration costs to your own collator,
+% **TODO please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
+% collator:
 
-~~~~~~~~~~~{\tt 51880-810-120-xxxx-90766}
+% ~~~~~~~~~~~{\tt 51880-810-120-xxxx-90766}
 %{\bf and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
 %  her know}.
 
-\noindent \textcolor{red}{**and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
-her know.}
+% \noindent \textcolor{red}{**and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+% her know.}
 %% Please do {\bf not} mention this collator when booking travel etc. on SRG,
 %% just JV the
 %% subsidy when you
 %% do your travel report (or credit card expense).
-
-\medskip
 
 The Events that we are subsidizing are (the two Ghement courses were paid
 directly by TESA):
@@ -185,6 +184,8 @@ directly by TESA):
 
  \end{itemize}
 
+ and maybe others that are relevant.
+
 %Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
 
 %Money will be moved by {\bf Budget Transfers} maybe for 2021-22???.
@@ -199,7 +200,7 @@ figheight = 7 # 6
 figwidth = 5.7
 @
 
-NEED TO: check total TESA budget, and what people paid for each course.
+% NEED TO: check total TESA budget, and what people paid for each course.
 
 <<subsidies, echo=FALSE, results='hide'>>=
 total = 21250
@@ -258,8 +259,8 @@ total_sub = sum(funds$Subsidy)
 @
 
 
-\noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total_sub} of
-  subsidy to distribute out of total received of \$\Sexpr{total-0}.}
+% \noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total_sub} of
+%  subsidy to distribute out of total received of \$\Sexpr{total-0}.}
 
 <<calcs2, echo=FALSE, results='hide'>>=
 # if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
@@ -277,7 +278,7 @@ funds_table = rbind(funds,
   select(-c("Division", "Taken.spot"))
 
 fundsTab = xtable(funds_table,
- caption="Funding available for each person. `Cost' is the cost of the course, `Subsidy' is  the funding from TESA. The `PR.Bayesian' course corresponds to both the Introduction course and the Stan course (so some people appear twice).",
+ caption="Funding available for each person. `Cost' is the cost of the course, `Subsidy' is  the funding from TESA. The `PR.Bayesian' course corresponds to both the Introduction course and the Stan course (so some people appear twice). Some people have said that they do not need a Subsidy so have a 0. Numbers are {\\bf approximate} (due to currency conversions etc.), please request the full amount.",
  label="tab:funds",
  digits = 0)
 @
