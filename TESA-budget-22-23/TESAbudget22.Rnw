@@ -1,0 +1,293 @@
+% TESAbudget22.Rnw.
+% TESAbudget19.Snw - how and where to move TESA money for 2019-20, and keeping
+%   track of participants.
+% TESAbudget18.Snw - how and where to move TESA money for 2018-19, and for
+%   keeping track of proposed participants.  12/7/18.
+% TESAbudget17.Snw - how and where to move TESA money for 2017-18. 6/9/17.
+% TESAbudget16.Snw - how and where to move TESA money for 2016-17. 30/11/16.
+
+\documentclass[11pt]{article}
+
+\textheight 213mm
+\topmargin -10mm
+\addtolength{\textwidth}{1.0in}
+\addtolength{\oddsidemargin}{-0.5in}
+
+\usepackage{epsfig}
+% \usepackage{rotating}           % For sideways table
+% \usepackage{lineno}
+\usepackage{amsmath}       % for \text for x_min, for \dfrac
+% \usepackage{cancel}        % for \cancel
+\usepackage{natbib}
+
+% \usepackage{resDocSty}   % Res Doc .sty file
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{mathptmx}    % Should have Times plus math fonts.
+
+
+\bibliographystyle{natbib}
+
+% \linenumbers
+
+
+\newcommand{\eb}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\xmin}{x_{\mathrm{min}}}
+\newcommand{\xmax}{x_{\mathrm{max}}}
+\newcommand{\logten}{\log_{\mathrm{10}}}
+\newcommand{\logtwo}{\log_{\mathrm{2}}}
+
+\newcommand\onefig[2]{    % filename is #1, text is #2
+  \begin{figure}[tp]
+  \begin{center}
+   % \includegraphics[width=6in,height=7in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+  \epsfxsize=6in
+  \epsfbox{#1.eps}
+  \end{center}
+  \caption{#2 }
+  \label{fig:#1}
+  \end{figure}
+  \clearpage
+}
+
+\newcommand\twofig[3]{   % figure #1 under #2, caption text #3
+  \begin{figure}[tp]     %  label will be #1
+  \centering
+%  \epsfxsize=6in
+%  \epsfysize=3.5in
+  \begin{tabular}{c}
+  %	\includegraphics[width=6in,height=3.5in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+  %	\includegraphics[width=6in,height=3.5in,keepaspectratio=TRUE]{#2.eps}
+  \epsfbox{#1.eps} \\
+  \epsfbox{#2.eps}
+  \end{tabular}
+  \caption{#3}
+  \label{fig:#1}
+  \end{figure}
+  \clearpage
+}
+
+\newcommand\threefig[4]{    % figure #1 then #2 then #3,
+  \begin{figure}[htp]       %  caption text #4, label will be #1
+  \centering
+  \begin{tabular}{c}
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#1.eps} \\  % RH much better control
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#2.eps} \\
+%	\includegraphics[width=6in,height=2.5in,keepaspectratio=TRUE]{#3.eps}
+  \vspace{-20mm}
+  \epsfbox{#1.eps} \\
+  \vspace{-20mm}
+  \epsfbox{#2.eps} \\
+   \vspace{-20mm}
+  \epsfbox{#3.eps}
+  \end{tabular}
+  \caption{#4}
+  \label{fig:#1}
+  \end{figure}
+}
+
+\renewcommand{\baselinestretch}{1.2}
+
+\begin{document}
+
+
+<<include=FALSE>>=
+library(knitr)
+opts_chunk$set(
+echo=TRUE, results='markup'
+)
+options(scipen = 8)
+@
+
+% Most useful options (with defaults):
+% echo        = TRUE     - includes R code in output file
+% keep.source = FALSE    - when echoing, if TRUE then original source is copied to the file, otherwise deparsed source is echoed.
+% eval        = TRUE     - if FALSE then chunk is not evaluated
+% results     = VERBATIM - R output included verbatim, if TEX output is already proper latex and included as is,
+%                          if HIDE then all output is completely suppressed (but the code executed - good for admb) results options should all be lower case (else get warnings)
+% pdf         = TRUE     - whether .pdf figures shall be generated
+% eps         = TRUE     - whether .eps figures shall be generated
+% strip.white = FALSE    - if true then blank lines at beginning and end of output are removed. If all, then all blank lines are removed.
+% width       = 6        - width of figures in inches
+% height      = 6        - height of figures in inches
+% fig         = FALSE    - whether the code chunk produces graphical output (only one per chunk)
+
+% \setkeys{Gin}{width=6in}     % from googling sweave figure bigger.
+%  It will set this for the rest of document [doesn't width do that in the above?]
+
+
+\begin{center}
+{\LARGE Pacific TESA budget summary for 2021-2022}
+
+Andrew Edwards % and Brooke Davis
+
+\today{}
+\end{center}
+
+Summary of Pacific TESA budget to subsidise participants'
+% travel and
+registration
+costs.
+%Tables 2-5 are summaries for Section
+%Heads for those sections with several attendees.
+
+% \medskip
+
+% Please follow these instructions:
+
+% \medskip
+
+%% 1. At some point you should hear from the local organisers of each event.
+%% If you are unable to attend please tell both the local organiser (once you know who
+%% that is) so they can update their attendance list, and also tell Andrew Edwards and
+%% Brooke Davis so that we can update our budget list and offer the spot to someone on
+%% the waitlist.
+%% {\bf We will continue to assume that you are attending unless you tell us otherwise}.
+
+%% \medskip
+
+%% 2. When the details of the course/workshop are finalised, you need to do your
+%% `Travel Request and Approval form' [formerly ITP], then book flights if needed
+%% through HRG. (Or just use your BTA if applicable). Please use your usual collator to
+%% book travel and claim expenses.
+
+%% \medskip
+
+% 3. {\bf After} you have charged your travel/registration costs to your own collator,
+% **TODO please get your admin person to JV the {\bf subsidy amount} (see Table 1) to the Pacific TESA
+% collator:
+
+% ~~~~~~~~~~~{\tt 51880-810-120-xxxx-90766}
+%{\bf and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+%  her know}.
+
+% \noindent \textcolor{red}{**and email Melody Haaland [Melody.Haaland@dfo-mpo.gc.ca] to let
+% her know.}
+%% Please do {\bf not} mention this collator when booking travel etc. on SRG,
+%% just JV the
+%% subsidy when you
+%% do your travel report (or credit card expense).
+
+The Events that we are subsidizing are (the two Ghement courses were paid
+directly by TESA):
+
+\begin{itemize}
+
+\item PR.Bayesian -- PR Statistics course on either `Bayesian Data Analysis'
+  or `Introduction to Stan Modelling'
+
+\item PR.wrangling -- PR Statistics course on `Data Wrangling and Visualisation in R'
+
+\item ICES.MSE -- ICES course on Management Strategy Evaluation
+
+\item Blue.Matter.MSE - Blue Matter Course on Management Strategy Evaluation
+
+ \end{itemize}
+
+ and maybe others that are relevant.
+
+%Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
+
+%Money will be moved by {\bf Budget Transfers} maybe for 2021-22???.
+<<setupR, echo=FALSE, results='hide'>>=
+require(dplyr)
+require(xtable)
+rm(list=ls())
+
+source("s_dplyr_funcs.r")       # helper functions that allow string arguments,
+                                #  by Sebastian Kranz.
+figheight = 7 # 6
+figwidth = 5.7
+@
+
+% NEED TO: check total TESA budget, and what people paid for each course.
+
+<<subsidies, echo=FALSE, results='hide'>>=
+total = 21250
+@
+
+<<calcs, echo=FALSE, results='hide'>>=
+orig_load <- read.csv("../requests21-22/PAC-TESA-requests-21-to-Natl-offerred-accepted.csv",
+                     header = TRUE,
+                     comment.char = "#",
+                     strip.white = TRUE) %>% as_tibble()
+
+# Now convert to something useful
+funds <- select(orig_load,
+                Surname,
+                Email,
+                Cost,
+                Subsidy,
+                Division,
+                Taken.spot.,
+                Course) %>%
+  rename(Taken.spot = Taken.spot.) %>%
+  dplyr::filter(Taken.spot == "Y" & Course != "GA") %>%
+  mutate_at(vars(Division, Taken.spot, Division, Course), factor)
+
+no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
+                                        # set to 0 further down.
+
+# Do the subsidies here:
+Blue_sub <- 1418
+ICES.MSE_sub <- 1076
+PR.Bayesian.Intro_sub <- 650
+PR.Bayesian.Stan_sub <- 350
+PR.wrangling_sub <- 650 # CHECK
+
+funds[funds$Course == "Blue.Matter.MSE", "Subsidy"] <- Blue_sub
+funds[funds$Course == "ICES.MSE", "Subsidy"]  <- ICES.MSE_sub
+funds[funds$Course == "PR.Bayesian.Intro", "Subsidy"]  <- PR.Bayesian.Intro_sub
+funds[funds$Course == "PR.Bayesian.Stan", "Subsidy"]  <- PR.Bayesian.Stan_sub
+funds[funds$Course == "PR.wrangling", "Subsidy"]  <- PR.wrangling_sub
+
+# Then set to 0 for those that don't need subsidy
+funds[no_sub_needed_index, "Subsidy"] = 0
+
+total_sub = sum(funds$Subsidy)
+
+# How I did it for 2019-20:
+# funds$Subsidy <- recode(funds$Subsidy,
+#                         intro_sub = 1000,     # 696 = 5700 / 5 * 0.85
+#                         spatial_sub = 1500,   # 1445 = 8500 / 5 * 0.85
+#                         poor_reg_sub = 200,        # for 4 registration-only Nanaimo people
+#                         poor_trav_sub = 1100,       # for 4 who have to travel to
+#                                                     #  Nanaimo, not from Van. 7100*0.85 = 6035.
+#                         poor_trav_sub_Van = 605,   # Brooke travel from Vancouver.
+#                         risk_sub = 1963,
+#                         host_sub = 2442)
+@
+
+
+% \noindent \textcolor{red}{Currently have an extra \$\Sexpr{total - total_sub} of
+%  subsidy to distribute out of total received of \$\Sexpr{total-0}.}
+
+<<calcs2, echo=FALSE, results='hide'>>=
+# if(!identical(as.integer(total), total.check)) stop("Check total and total.check.")
+
+# funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
+
+funds_table = rbind(funds,
+                    tibble(Surname =  "Total",
+                               Email = NA,
+                               Cost = NA,
+                               Subsidy = as.integer(total_sub),
+                               Division = NA,
+                               Taken.spot = NA,
+                               Course = NA)) %>%
+  select(-c("Division", "Taken.spot"))
+
+fundsTab = xtable(funds_table,
+ caption="Funding available for each person. `Cost' is the cost of the course, `Subsidy' is  the funding from TESA. The `PR.Bayesian' course corresponds to both the Introduction course and the Stan course (so some people appear twice). Some people have said that they do not need a Subsidy so have a 0. Numbers are {\\bf approximate} (due to currency conversions etc.), please request the full amount.",
+ label="tab:funds",
+ digits = 0)
+@
+
+
+<<results='asis', echo=FALSE>>=
+print(fundsTab, table.placement="bh", caption.placement="top",
+    include.rownames = FALSE)
+@
+
+\end{document}
