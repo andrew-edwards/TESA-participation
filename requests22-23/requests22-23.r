@@ -1,5 +1,8 @@
 # requests22-23.r - import .csv file from Google Form (manually add a return at
 #  the end), and tidy up. Usually then just manually edit the spreadsheet. 24/5/22.
+# Someone replying a second time is okay, Google highlights email address as (1)
+#  but saves it normally. Shannon (for her un-named person) and Hilari both did
+#  in 2022.
 
 # requests19-20.r - import .csv file from Google Form (manually add a return at the end)
 #  and this code tidies it up. 11th June 2019.
@@ -31,12 +34,12 @@ tab <- tibble::as_tibble(tab_raw) %>%
            "Location" = "Work.location..to.estimate.travel.costs.",
            "HMM" =  "Hidden.Markov.Models",
            "sdmTMB" = "Spatial.and.spatiotemporal.models.with.sdmTMB",
-           "ICES.TAFReproducible" =
+           "ICES.TAF" =
              "Reproducible.science..best.practices.and.ICES.Transparent.Assessment.Framework",
            "PRStats" = "PR.Statistics..also.give.course.name.",
            "Highland" =
              "Highland.Statistics..also.give.course.name.",
-           "PSBQ" =
+           "CSBQ" =
              "X.The.Quebec.Centre.for.Biodiversity.Science..also.give.course.name.",
            "WS.anadromous" = "Anadromous.Fishes.Stock.Assessment",
            "WS.ageing" =
@@ -51,6 +54,9 @@ tab <- tibble::as_tibble(tab_raw) %>%
            "Webinar.IKseries" = "Indigenous.knowledge.and.stock.assessment.webinar.series"
          ) %>%
   select(-Timestamp)
+ # sum(tab == "No", na.rm = TRUE)   = 7, Virginia Noble replied "No" instead of
+ # blank, replace:
+tab[tab == "No"] <- ""
 
 # Copy Lyanne's "Same answer as above":
 # tab[which(tab$First.name == "Lyanne"), "Ghement.advanced.ts"]  <-
@@ -71,17 +77,14 @@ events = names(tab)[8:21]   # change manually
 #  sym() is from https://edwinth.github.io/blog/dplyr-recipes/ thanks
 #  to Sean Anderson.
 for(i in 1:length(events)){
-    temp = filter(tab, !!sym(events[i]) != "")
-    temp = select(temp,
-                  Surname,
-                  First.name,
-                  Email,
-                  Division,
-                  Priority,
-                  Location,
-                  events[i])
+    temp = filter(tab, !!sym(events[i]) != "") %>%
+           select(Surname:Location,
+                  events[i]) %>%
+      rename("Comment" = events[i]) %>%
+      mutate("Course.code" = events[i]) %>%
+      relocate(Course.code)
     print(events[i])
-    print(select(temp, -events[i]))
+    #print(select(temp, -events[i]))
 #    assign(paste0(events[i], "-tab"),
 #           select(noquote(paste0(events[i], "-tab")),
     #    assign(paste0(events[i], ".tab"), temp)
@@ -106,14 +109,14 @@ for(i in 1:length(events)){
       ## }
 
       # Try just doing to one file:
-      temp <- rbind(rep(",", length(names(temp))),
-                    c(names(temp)[length(names(temp))],
-                      rep(",", length(names(temp))-1)),
-                    temp)
-      append <- ifelse(i == 1, FALSE, TRUE)   # appending if not first one
+     # temp <- rbind(rep(",", length(names(temp))),
+     #               c(names(temp)[length(names(temp))],
+     #                 rep(",", length(names(temp))-1)),
+     #               temp)
+     append <- ifelse(i == 1, FALSE, TRUE)   # appending if not first one
       if(!append){
         col.names <- names(temp)
-        col.names[length(col.names)] = "Comment"
+       # col.names[length(col.names)] = "Comment"
       } else {
         col.names = FALSE
       }
@@ -124,9 +127,11 @@ for(i in 1:length(events)){
                   row.names = FALSE,
                   append = append,
                   col.names = col.names)
-
     }
 }
+
+# Open in Excel and copy into Mary's.
+
 
 # print(as.data.frame(select(tab2, First.name, Surname, Work.location)))
 
