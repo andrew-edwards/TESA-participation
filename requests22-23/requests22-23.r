@@ -1,5 +1,8 @@
 # requests22-23.r - import .csv file from Google Form (manually add a return at
-#  the end), and tidy up. Usually then just manually edit the spreadsheet. 24/5/22.
+#  the end), and tidy up if needed (wasn't in 2022). Run this code.
+#  Open 'all-requests-comments.csv' in Excel and copy straight into Mary's (this
+#  code does the formatting).
+#
 # Someone replying a second time is okay, Google highlights email address as (1)
 #  but saves it normally. Shannon (for her un-named person) and Hilari both did
 #  in 2022.

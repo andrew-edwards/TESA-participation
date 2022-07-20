@@ -37,8 +37,12 @@ From earlier years:
 
 ## Keeping track of participants and their subsidies
 
-6. Susan will send out a spreadsheet with participants' names and expected subsidy for each event (wasn't until July in 2018 though). Looks like I summarised that in `TESA-budget-18/TESAfunds18.csv`, to then process and create a .pdf in `TESA-budget-18/TESAfunds18.Snw`. Then when things change (people change etc.), I update the .csv and re-run it. So best to create a new `TESA-budget-19/` folder and use what I've done as a template. Have done that.
+6. National master spreadsheet is at on TESA Teams: Regional TESA Participants - 2022-2023_AllRegions_300622
 
-7. **When participants change** - just change `TESAfunds19.csv`, re-build `TESAbudget19.pdf`,  and also update Susan's master spreadsheet on the shared folder at `\\svmonkenclu01.ENT.dfo-mpo.ca\natshare01\TESA-ETES`.
+Update that when people change.
+
+For subsidies, also keep track locally. **When participants change** - just change `requests22-23/TESAfunds22-23.csv`, re-build `TESA-budget22-23/TESAbudget22-23.pdf`.
+
+The `TESAfunds22-23.csv` is initially taken from the PAC tab of the master spreadsheet (as everyone essentially got accepted; which was essentially `all-requests-comments.csv` but includes a few latecomers got manually added), then whittled down to just the courses/workshops that have a subsidy aspect.
 
 This may seem a bit cumbersome, but we are the largest region, and for some regions this whole process is much simpler (the TESA reps will know most of the interested people anyway). 

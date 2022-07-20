@@ -1,4 +1,4 @@
-% TESAbudget22.Rnw.
+% TESAbudget22.Rnw.  knitr::knit("TESAbudget22.Rnw"); shell("pdflatex TESAbudget22")
 % TESAbudget19.Snw - how and where to move TESA money for 2019-20, and keeping
 %   track of participants.
 % TESAbudget18.Snw - how and where to move TESA money for 2018-19, and for
@@ -126,7 +126,7 @@ Andrew Edwards % and Brooke Davis
 \end{center}
 
 Summary of Pacific TESA budget to subsidise participants'
-% travel and
+travel and
 registration
 costs.
 %Tables 2-5 are summaries for Section
@@ -169,12 +169,12 @@ costs.
 %% subsidy when you
 %% do your travel report (or credit card expense).
 
-The Events that we are subsidizing are (the two Ghement courses were paid
+**The Events that we are subsidizing are (the two Ghement courses were paid
 directly by TESA):
 
 \begin{itemize}
 
-\item PR.Bayesian -- PR Statistics course on either `Bayesian Data Analysis'
+\item **PR.Bayesian -- PR Statistics course on either `Bayesian Data Analysis'
   or `Introduction to Stan Modelling'
 
 \item PR.wrangling -- PR Statistics course on `Data Wrangling and Visualisation in R'
@@ -206,46 +206,54 @@ figwidth = 5.7
 <<subsidies, echo=FALSE, results='hide'>>=
 total = 21250
 @
-
+%
+% MIS Stock Assessment EG-04  -> MIS EG-04 manually in .csv
+% And SSI -> Aquaculture Management Division (AMD)
+%
 <<calcs, echo=FALSE, results='hide'>>=
-orig_load <- read.csv("../requests21-22/PAC-TESA-requests-21-to-Natl-offerred-accepted.csv",
+orig_load <- read.csv("../requests22-23/TESAfunds22-23.csv",
                      header = TRUE,
                      comment.char = "#",
                      strip.white = TRUE) %>% as_tibble()
 
-# Now convert to something useful
+# Now convert to just what is needed here
 funds <- select(orig_load,
+                Course.code,
                 Surname,
+                First.name,
                 Email,
-                Cost,
-                Subsidy,
                 Division,
-                Taken.spot.,
-                Course) %>%
-  rename(Taken.spot = Taken.spot.) %>%
-  dplyr::filter(Taken.spot == "Y" & Course != "GA") %>%
-  mutate_at(vars(Division, Taken.spot, Division, Course), factor)
+                Location) %>%
+  # dplyr::filter(Taken.spot == "Y" & Course != "GA") %>%
+  mutate_at(vars(Course.code,
+                 Division,
+                 Location),
+            factor) %>%
+  mutate(Subsidy = NA)
 
-no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
-                                        # set to 0 further down.
+# no_sub_needed_index <- which(funds$Subsidy == 0)   # put as 0 in .csv file, then
+#                                        # set to 0 further down.
 
 # Do the subsidies here:
-Blue_sub <- 1418
-ICES.MSE_sub <- 1076
-PR.Bayesian.Intro_sub <- 650
-PR.Bayesian.Stan_sub <- 350
-PR.wrangling_sub <- 650 # CHECK
+ICES.TAF_sub <- 650      # 500Euro = $650, already said we'd fund it all
+PRStats_sub <- 600      # 300-400GBP mostly, = $465-620
+Highland_sub <- 600      # 500GBP = $775
+WS.anadromous_sub_Nanaimo <- 120
+WS.anadromous_sub_fly <- 1500
+WS.anadromous_sub_other <- 1500
+WS.ageing_sub <- 1500
 
-funds[funds$Course == "Blue.Matter.MSE", "Subsidy"] <- Blue_sub
-funds[funds$Course == "ICES.MSE", "Subsidy"]  <- ICES.MSE_sub
-funds[funds$Course == "PR.Bayesian.Intro", "Subsidy"]  <- PR.Bayesian.Intro_sub
-funds[funds$Course == "PR.Bayesian.Stan", "Subsidy"]  <- PR.Bayesian.Stan_sub
-funds[funds$Course == "PR.wrangling", "Subsidy"]  <- PR.wrangling_sub
+funds[funds$Course.code == "ICES.TAF", "Subsidy"] <- ICES.TAF_sub
+funds[funds$Course.code == "PRStats", "Subsidy"]  <- PRStats_sub
+funds[funds$Course.code == "Highland", "Subsidy"]  <- Highland_sub
+funds[funds$Course.code == "WS.anadromous" & funds$Location == "Nanaimo", "Subsidy"]  <- WS.anadromous_sub_Nanaimo
+funds[funds$Course.code == "WS.anadromous" & funds$Location != "Nanaimo", "Subsidy"]  <- WS.anadromous_sub_other
+funds[funds$Course.code == "WS.ageing", "Subsidy"]  <- WS.ageing_sub
 
 # Then set to 0 for those that don't need subsidy
-funds[no_sub_needed_index, "Subsidy"] = 0
+# funds[no_sub_needed_index, "Subsidy"] = 0
 
-total_sub = sum(funds$Subsidy)
+total_sub = sum(funds$Subsidy) # master spreadsheet which says 31600
 
 # How I did it for 2019-20:
 # funds$Subsidy <- recode(funds$Subsidy,
@@ -269,17 +277,20 @@ total_sub = sum(funds$Subsidy)
 # funds = mutate(funds, Sec.costs = Est.costs - Subsidy)
 
 funds_table = rbind(funds,
-                    tibble(Surname =  "Total",
-                               Email = NA,
-                               Cost = NA,
-                               Subsidy = as.integer(total_sub),
-                               Division = NA,
-                               Taken.spot = NA,
-                               Course = NA)) %>%
-  select(-c("Division", "Taken.spot"))
+                    tibble(Course.code = "Total",
+                           Surname = NA,
+                           First.name = NA,
+                           Email = NA,
+                           Division = NA,
+                           Location = NA,
+                           Subsidy = as.integer(total_sub),
+                           # Taken.spot = NA,
+                               )) %>%
+  select(-c("Division", "First.name")) # "Taken.spot"
 
+# `Cost' is the cost of the course,
 fundsTab = xtable(funds_table,
- caption="Funding available for each person. `Cost' is the cost of the course, `Subsidy' is  the funding from TESA. The `PR.Bayesian' course corresponds to both the Introduction course and the Stan course (so some people appear twice). Some people have said that they do not need a Subsidy so have a 0. Numbers are {\\bf approximate} (due to currency conversions etc.), please request the full amount.",
+ caption="Funding available for each person. `Subsidy' is  the funding from TESA.",
  label="tab:funds",
  digits = 0)
 @
@@ -289,5 +300,22 @@ fundsTab = xtable(funds_table,
 print(fundsTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 @
+
+Unique divisions:
+<<echo=FALSE>>=
+unique(funds$Division)
+@
+
+Divions of people not in StAR or ESD:
+
+<<>>=
+funds_other_div <- filter(funds,
+                          !(Division %in% c("ESD", "StAR")))
+
+
+@
+
+
+**Do Division tables.
 
 \end{document}
