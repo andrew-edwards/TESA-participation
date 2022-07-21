@@ -37,12 +37,12 @@ From earlier years:
 
 ## Keeping track of participants and their subsidies
 
-6. National master spreadsheet is at on TESA Teams: Regional TESA Participants - 2022-2023_AllRegions_300622
+National master spreadsheet is on TESA Teams: Regional TESA Participants - 2022-2023_AllRegions_300622
 
-Update that when people change.
+Update that when people change (combined list and PAC list, so I can just copy emails).
 
 For subsidies, also keep track locally. **When participants change** - just change `requests22-23/TESAfunds22-23.csv`, re-build `TESA-budget22-23/TESAbudget22-23.pdf`.
 
-The `TESAfunds22-23.csv` is initially taken from the PAC tab of the master spreadsheet (as everyone essentially got accepted; which was essentially `all-requests-comments.csv` but includes a few latecomers got manually added), then whittled down to just the courses/workshops that have a subsidy aspect.
+The `TESAfunds22-23.csv` is initially taken from the PAC tab of the master spreadsheet (as everyone essentially got accepted; which was essentially `all-requests-comments.csv` but includes a few latecomers got manually added), then whittled down to just the courses/workshops that have a subsidy aspect. Manually standardised some Division names (SSI to AMD, StAD and SCA Stock Assessment and Science Stock Assessment to SCA, Environmental Watch to ESD.
 
 This may seem a bit cumbersome, but we are the largest region, and for some regions this whole process is much simpler (the TESA reps will know most of the interested people anyway). 

@@ -125,10 +125,10 @@ Andrew Edwards % and Brooke Davis
 \today{}
 \end{center}
 
-Summary of Pacific TESA budget to subsidise participants'
-travel and
-registration
-costs.
+% Summary of Pacific TESA budget to subsidise participants'
+%travel and
+%registration
+%costs.
 %Tables 2-5 are summaries for Section
 %Heads for those sections with several attendees.
 
@@ -169,25 +169,53 @@ costs.
 %% subsidy when you
 %% do your travel report (or credit card expense).
 
-**The Events that we are subsidizing are (the two Ghement courses were paid
-directly by TESA):
+The good news is that we are able to accommodate everyone who expressed an
+interest in participating in the TESA events, and provide a subsidy for events
+that have a cost. (Though the free online sdmTMB course may end up with a limit
+on numbers).
 
+The events that we are subsidizing are (other events are free to attend):
 \begin{itemize}
 
-\item **PR.Bayesian -- PR Statistics course on either `Bayesian Data Analysis'
-  or `Introduction to Stan Modelling'
+\item ICES.TAF -- ICES course: Reproducible science, best practices and ICES Transparent Assessment Framework
 
-\item PR.wrangling -- PR Statistics course on `Data Wrangling and Visualisation in R'
+\item PRStats -- online courses by PR Statistics
 
-\item ICES.MSE -- ICES course on Management Strategy Evaluation
+\item Highland -- online courses by Highland Statistics
 
-\item Blue.Matter.MSE - Blue Matter Course on Management Strategy Evaluation
+\item WS.anadromous -- TESA workshop: Anadromous Fishes Stock Assessment
 
- \end{itemize}
+\item WS.ageing -- TESA workshop: Best practices in age determination in marine organisms and in the use of ageing data in stock assessments
 
- and maybe others that are relevant.
+\end{itemize}
 
-%Table~\ref{tab:transSumm} shows the totals to be transferred to each collator.
+Please:
+\begin{enumerate}
+
+\item See the attached TESA Calendar Word file for latest updates to dates for all events.
+
+\item Look up yourself on Table~\ref{tab:funds} here, to see the expected amount that
+  TESA will subsidise you. Amounts might change slightly as we're slightly
+over budget (but someone always drops out so I'll tweak it later). The
+remaining costs need to come out of your local budget.
+
+\item Please let me know if you are no longer interested in an event (I'll
+  assume you are still good if I don't hear from you, so no need to email
+  me). Only worry about the events listed here (i.e. not the other free online events).
+
+\item For the online courses (ICES, PR Stats and Highland Statistics) please
+  register as soon as you can, as TESA has no control over participation.
+
+\item This year you will be able to claim your TESA subsidy directly from a
+  Division-level collator. This is not set up yet (hopefully soon), so for now
+  if you incur any expenses it may be best to hold off on coding them if you
+  can.
+
+\item Also please double-check your Division in Table~\ref{tab:funds}. I
+  standardised several to SCA (South Coast Area), AMD (Aquaculture
+  Management Division), or ESD (Ecosystem Sciences Division), so let me know if
+  any of those are wrong.
+\end{enumerate}
 
 %Money will be moved by {\bf Budget Transfers} maybe for 2021-22???.
 <<setupR, echo=FALSE, results='hide'>>=
@@ -239,8 +267,8 @@ ICES.TAF_sub <- 650      # 500Euro = $650, already said we'd fund it all
 PRStats_sub <- 600      # 300-400GBP mostly, = $465-620
 Highland_sub <- 600      # 500GBP = $775
 WS.anadromous_sub_Nanaimo <- 120
-WS.anadromous_sub_fly <- 1500
 WS.anadromous_sub_other <- 1500
+WS.anadromous_sub_fly <- 1750    # Person from Whitehorse
 WS.ageing_sub <- 1500
 
 funds[funds$Course.code == "ICES.TAF", "Subsidy"] <- ICES.TAF_sub
@@ -248,6 +276,7 @@ funds[funds$Course.code == "PRStats", "Subsidy"]  <- PRStats_sub
 funds[funds$Course.code == "Highland", "Subsidy"]  <- Highland_sub
 funds[funds$Course.code == "WS.anadromous" & funds$Location == "Nanaimo", "Subsidy"]  <- WS.anadromous_sub_Nanaimo
 funds[funds$Course.code == "WS.anadromous" & funds$Location != "Nanaimo", "Subsidy"]  <- WS.anadromous_sub_other
+funds[funds$Course.code == "WS.anadromous" & funds$Location == "Whitehorse", "Subsidy"]  <- WS.anadromous_sub_fly
 funds[funds$Course.code == "WS.ageing", "Subsidy"]  <- WS.ageing_sub
 
 # Then set to 0 for those that don't need subsidy
@@ -280,17 +309,17 @@ funds_table = rbind(funds,
                     tibble(Course.code = "Total",
                            Surname = NA,
                            First.name = NA,
-                           Email = NA,
+                           Email = paste0("Remaining subsidy =", 31600 - total_sub),
                            Division = NA,
                            Location = NA,
                            Subsidy = as.integer(total_sub),
                            # Taken.spot = NA,
                                )) %>%
-  select(-c("Division", "First.name")) # "Taken.spot"
+  select(-c("First.name")) # "Taken.spot"
 
 # `Cost' is the cost of the course,
 fundsTab = xtable(funds_table,
- caption="Funding available for each person. `Subsidy' is  the funding from TESA.",
+ caption="Funding available for each person. `Subsidy' is  the approximate expected funding from TESA.",
  label="tab:funds",
  digits = 0)
 @
@@ -301,21 +330,8 @@ print(fundsTab, table.placement="bh", caption.placement="top",
     include.rownames = FALSE)
 @
 
-Unique divisions:
-<<echo=FALSE>>=
+<<echo=FALSE, eval=FALSE>>=
 unique(funds$Division)
 @
-
-Divions of people not in StAR or ESD:
-
-<<>>=
-funds_other_div <- filter(funds,
-                          !(Division %in% c("ESD", "StAR")))
-
-
-@
-
-
-**Do Division tables.
 
 \end{document}
