@@ -192,7 +192,8 @@ The events that we are subsidizing are (other events are free to attend):
 Please:
 \begin{enumerate}
 
-\item See the attached TESA Calendar Word file for latest updates to dates for all events.
+\item See the attached TESA Calendar Word file for latest updates to dates for
+  all events (as sent out previously).
 
 \item Look up yourself on Table~\ref{tab:funds} here, to see the expected amount that
   TESA will subsidise you. Amounts might change slightly as we're slightly
@@ -232,7 +233,7 @@ figwidth = 5.7
 % NEED TO: check total TESA budget, and what people paid for each course.
 
 <<subsidies, echo=FALSE, results='hide'>>=
-total = 21250
+# total = 21250
 @
 %
 % MIS Stock Assessment EG-04  -> MIS EG-04 manually in .csv
