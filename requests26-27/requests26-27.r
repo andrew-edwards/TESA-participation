@@ -1,3 +1,5 @@
+# reqeuts26-27.r - 30 responses when downloading.
+
 # requests25-26.r. 29 responses when downloading 10/3/25 9:26am. UPdated
 # 12/3/25, added Lauren Gill and Noel Swain manually to
 # all-requests-comments.csv for WHAM (easier than
@@ -42,42 +44,41 @@
 
 require(dplyr)
 
-stop("Do not re-run as am now manually working out the Priority for each course. Have resaved all-requests-comments.csv; just manually edit that as a spreadsheet.")
+# stop("Do not re-run as am now manually working out the Priority for each course. Have resaved all-requests-comments.csv; just manually edit that as a spreadsheet.")
 # 34 responses
-tab_raw <- read.csv("TESA participation 2025-26.csv")
+tab_raw <- read.csv("TESA participation 2026-27.csv")
 tab <- tibble::as_tibble(tab_raw) %>%
-  mutate(Supervisor = NA,
+  mutate(# Supervisor = NA,
          # Region = "PAC",
          Priority = NA) %>%
   dplyr::relocate(
-           Surname,
-           First.name,
-           "Email" = "Username",
-           Division,
-           Supervisor,
-           Priority,                    # do names(tab_raw) to
+    Name,
+    "Email" = "Username",
+    Division,
+    Priority,                    # do names(tab_raw) to
                                         # figure out the column names to put
                                         # here as they get filled with ....
-           "Location" = "Work.location..to.estimate.travel.costs.",
-           "WHAM.nanaimo" =
-             "Course...WHAM.in.Nanaimo.",
-           "WHAM.quebec" =
-             "Course..WHAM.in.Quebec",
-           "R.package.adv" = "Course..Advanced.R.package.development..virtual.",
-           "Eco.info.st.johns" = "Workshop..Incorporating.Ecosystem.Information.into.Assessment.Models..St..John.s..NL.",
-           "Survey.design.nanaimo" = "Workshop..Survey.Design..Nanaimo.",
-           "PR.stats.etc" = "Online.Course.of.Your.Choice..PR.Statistics..Highland.Statistics..Quebec.Center.for.Biodiversity.Science.etc...Please.include.the.name.of.the.course.and.the.cost.converted.to.CAD."
-         ) %>%
-  select(-c("Timestamp", "X", "X.1"))
+    "Location" = "Work.location..to.estimate.travel.costs.",
+    "FIMS.nanaimo" =
+      "Course...FIMS.in.Nanaimo",
+    "Mammals.winnipeg" =
+      "Course..Marine.Mammals.in.Winnipeg",
+    "Linux" = "Course..Linux.and.command.line..virtual.",
+    "Slurm" = "Course..Slurm..virtual.",
+    "Database.halifax" = "Workshop..Assessment.outputs.database..Halifax.",
+    "Ageing" = "Workshop..Fish.ageing..virtual.") %>%
+  select(-c("Timestamp"))
  # sum(tab == "No", na.rm = TRUE)   = 7, Virginia Noble replied "No" instead of
  # blank (Lyanne for 2024-25), replace:
-tab[tab == "No"] <- ""
+# tab[tab == "No"] <- ""
 
 # Copy Lyanne's "Same answer as above":
 # tab[which(tab$First.name == "Lyanne"), "Ghement.advanced.ts"]  <-
 #   tab[which(tab$First.name == "Lyanne"), "Ghement.linear.ts"]
 
-events = names(tab)[8:13]   # change manually
+events = names(tab)[6:11]   # change manually
+
+tab <- tab[- which(tab$FIMS.nanaimo == "Yes"), ]   # Remove Nick's first one in 2026-27
 
 # May need this based on 17-18 to shorten any long answers
 #tab = tbl_df(lapply(tab, function(x) {
@@ -93,7 +94,7 @@ events = names(tab)[8:13]   # change manually
 #  to Sean Anderson.
 for(i in 1:length(events)){
     temp = filter(tab, !!sym(events[i]) != "") %>%
-           select(Surname:Location,
+           select(Name:Location,
                   events[i]) %>%
       rename("Comment" = events[i]) %>%
       mutate("Course.code" = events[i]) %>%
@@ -135,7 +136,7 @@ for(i in 1:length(events)){
       } else {
         col.names = FALSE
       }
-      write.table(file = "all-requests-comments.csv",    # could add date here TODO
+      write.table(file = "PAC-TESA-requests-comments-26-27.csv",    # could add date here TODO
                   temp,
                   quote = TRUE,
                   sep = ",",
@@ -146,6 +147,8 @@ for(i in 1:length(events)){
 }
 
 stop("Stop here unless adding new people - this is for adding those after the deadline, though see notes at top of this file")
+
+# Not touched yet for 26-27:
 
 # Want to collate just the new people, by course.
 
